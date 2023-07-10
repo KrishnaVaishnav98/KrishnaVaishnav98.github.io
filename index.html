@@ -5,104 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
 </head>
-
-<style>
-    /* <!-- ----------------------------           NAVBAR START            ---------------------------- --> */
-
-    body {
-        margin: 0px;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
-    }
-
-    .navbar {
-        margin: 0px;
-        height: 50px;
-        border: 1px solid red;
-        color: #37474F;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .first-letter {
-        color: #B71C1C;
-    }
-
-    .left-navbar {
-        display: flex;
-        align-items: center;
-    }
-
-    .right-navbar {
-        padding-right: 50px;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        visibility: visible;
-    }
-
-    .right-navbar a {
-        text-decoration: none;
-        color: #546E7A;
-        font-size: 16px;
-        margin: 0px 20px 0px 20px;
-        font-weight: 600;
-
-    }
-
-    .right-navbar a:hover {
-        color: #D32F2F;
-    }
-
-    #menu img {
-        width: 30px;
-        margin: 0px 10px 0px 0px;
-        visibility: hidden;
-    }
-
-    /* <!-- ----------------------------  HOME-START          --------------------------- ------> */
-
-    #home {
-        display: flex;
-    }
-
-    /* <!-- ----------------------------  HOME-START          --------------------------- ------> */
-
-    /* < !-- ---------------------------- NAVBAR END --------------------------- ------> */
-
-
-
-    /* < !-- ---------------------------- MEDIA QUERY --------------------------- ------> */
-
-    @media only screen and (max-width: 600px) {
-
-        .left-navbar {
-            padding-left: 10px;
-        }
-
-        .left-navbar #menu {
-            padding-right: 10px;
-        }
-
-        .right-navbar {
-            padding-right: 50px;
-            visibility: hidden;
-        }
-
-        .right-navbar a {
-            margin: 0px 10px 0px 10px;
-        }
-
-        #menu img {
-            visibility: visible;
-        }
-    }
-
-    @media only screen and (min-width: 600px) {}
-
-    /* < !-- ---------------------------- MEDIA QUERY END --------------------------- ------> */
-</style>
 
 <body>
 
@@ -135,7 +39,7 @@
         <!-- ----------------------------  HOME-START          --------------------------- ------>
 
         <div id="home">
-            <div>
+            <div id="left-home">
                 <p>
                     Hi, I'm
                 </p>
@@ -148,22 +52,16 @@
                 <p>
                     Passionate Full Stack Web Developer proficient in MERN stack. Seeking to utilize my skills and
                     expertise
-                    to contribute to the development of innovative web solutions as a Web Development Engineer.
+                    to contribute to the development of innovative web solutions as a Web Developer.
                 </p>
             </div>
-            <div>
+            <div id="right-home">
                 <img src="./Images/ProfilePic.png" alt="">
             </div>
         </div>
 
         <!-- ----------------------------    HOME END           --------------------------- ------>
     </div>
-
-
-
-
-
-
 
 
 
