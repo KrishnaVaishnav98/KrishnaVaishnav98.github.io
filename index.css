@@ -100,6 +100,25 @@
       font-weight: 400;
   }
 
+  .contact-div {
+      display: flex;
+      gap: 20px;
+      padding-top: 20px;
+      margin-left: 110px;
+  }
+
+  .contact-div>div {
+      width: 5%;
+  }
+
+  .contact-div>div:hover {
+      width: 6%;
+  }
+
+  .contact-div>div>img {
+      width: 100%;
+  }
+
   #right-home {
       width: 40%;
       margin: auto;
@@ -133,7 +152,8 @@
 
   .abt-desc {
       text-align: justify;
-      font-size: 18px;
+      font-size: 17px;
+      font-weight: 400;
   }
 
 
