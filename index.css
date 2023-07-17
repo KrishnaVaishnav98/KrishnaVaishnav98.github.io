@@ -244,12 +244,12 @@
 
 
   /* <!-- ----------------------------  PROJECT-start        --------------------------- ------> */
-  #project {
+  #projects {
       width: 100%;
       margin: 100px 0px;
   }
 
-  #project h1 {
+  #projects h1 {
       margin: auto;
       text-align: center;
       color: #1A237E;
@@ -342,6 +342,19 @@
   }
 
   /* <!-- ----------------------------  SKILLS-END          --------------------------- ------> */
+  #github h1 {
+      margin: auto;
+      text-align: center;
+      color: #1A237E;
+      margin: 100px 0px 40px 0px;
+  }
+
+  .react-activity-calendar {
+      display: flex;
+      width: 90%;
+      margin: auto;
+      gap: 20px
+  }
 
   /* < !-- ---------------------------- MEDIA QUERY --------------------------- ------> */
 
