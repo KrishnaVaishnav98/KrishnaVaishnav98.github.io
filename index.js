@@ -1,15 +1,26 @@
-// import { GitHubCalendar } from 'react-github-calendar';
-// import React from 'react';
-// import { GitHubCalendar } from 'react-github-calendar';
+var menu = document.getElementById("drop-down");
+var list = document.querySelectorAll(".nav-link");
 
-// const App = () => {
-//     return (
-//         <div>
-//             <h1>GitHub Activity Calendar</h1>
-//             <GitHubCalendar username="KrishnaVaishnav98" />
-//         </div>
-//     );
-// };
+function myFunction() {
+    if (menu.style.display === "block") {
+        menu.style.display = "none";
 
-// export default App;
+    } else {
+        menu.style.display = "block";
+    }
+}
+
+function linkClick() {
+    if (menu.style.display === "block") {
+        menu.style.display = "none";
+
+    } else {
+        menu.style.display = "block";
+    }
+}
+
+
+
+
+
 
