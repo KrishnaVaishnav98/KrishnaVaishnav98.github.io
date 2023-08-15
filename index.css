@@ -9,7 +9,8 @@
   .navbar {
       margin: 0px;
       height: 50px;
-      /* background-color: #fbfaf4; */
+      background-color: rgba(255, 255, 255, 0.8);
+      /* #dfe2f2; */
       color: #37474F;
       display: flex;
       justify-content: space-between;
@@ -69,7 +70,9 @@
       position: absolute;
       top: -70px;
       left: 50px;
-      background-color: whitesmoke;
+      background-color: rgb(246, 246, 251);
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+      border-radius: 20px;
       padding: 10px;
   }
 
@@ -82,7 +85,9 @@
       text-decoration: none;
       display: block;
       width: 100px;
-      color: black;
+      color: #303360;
+      font-weight: 600;
+      margin: auto;
   }
 
   /* < !-- ---------------------------- NAVBAR END --------------------------- ------> */
