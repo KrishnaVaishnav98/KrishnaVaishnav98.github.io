@@ -4,7 +4,9 @@
   body {
       margin: 0px;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      background-size: cover;
+      /* background-size: cover; */
+
+      /* background-image: url('https://cdn.pnghd.pics/data/909/white-background-wallpaper-17.jpg') */
   }
 
   .navbar {
@@ -34,11 +36,10 @@
   .left-navbar {
       display: flex;
       align-items: center;
-      margin-left: 20px;
+      margin-left: 2%;
   }
 
   .right-navbar {
-      padding-right: 50px;
       display: flex;
       justify-content: space-evenly;
       align-items: center;
@@ -113,7 +114,6 @@
       display: flex;
       flex-direction: row;
       margin: auto;
-
   }
 
   #left-home {
@@ -169,10 +169,6 @@
       width: 50px;
   }
 
-  /* .contact-div>a:hover {
-      width: 6%;
-  } */
-
   .contact-div div img {
       width: 40px;
   }
@@ -200,8 +196,6 @@
       margin: auto;
       text-align: center;
       border-radius: 20px;
-      padding: 20px;
-      /* background-image: url('./Images/aa.jpg'); */
   }
 
   #right-home>img {
@@ -226,7 +220,6 @@
       padding-top: 80px;
       margin: auto;
       display: flex;
-
   }
 
   .abt-title {
@@ -249,19 +242,15 @@
 
   #about-content {
       width: 50%;
-      /*  */
       margin-top: 60px;
   }
 
   #right-about {
       width: 30%;
-      /* height: 30%; */
       margin: auto;
       text-align: center;
       border-radius: 20px;
       padding: 20px;
-
-      /* background-image: url('./Images/aa.jpg'); */
   }
 
   #right-about>img {
@@ -278,7 +267,6 @@
   /* <!-- ----------------------------  EDUCATION          --------------------------- ------> */
   .education-section {
       margin: 100px 0px;
-
   }
 
   #edu-card {
@@ -326,7 +314,6 @@
   #projects {
       margin: auto;
       text-align: center;
-
   }
 
   #projects h1 {
@@ -379,10 +366,12 @@
   h3,
   h5 {
       text-align: left;
+
   }
 
   #project-card p:nth-child(1) {
       text-align: center;
+
   }
 
   /* <!-- ----------------------------  PROJECT-END          --------------------------- ------> */
@@ -395,6 +384,7 @@
       margin: auto;
       text-align: center;
       margin-top: 100px;
+
   }
 
   #skills h1 {
@@ -402,23 +392,27 @@
       text-align: center;
       color: #1A237E;
       padding: 10px;
+
   }
 
   #skills h1:hover {
       background-color: #fbf2f2;
       border-radius: 10px;
+
   }
 
   #skills h2 {
       margin: auto;
       text-align: center;
       padding: 50px 0px;
+
   }
 
   .skills-container {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
+
   }
 
   .skills-card {
@@ -431,10 +425,12 @@
       margin: auto;
       margin-top: 10px;
       border-radius: 10px;
+
   }
 
   .skills-card-img {
       width: 100%;
+
   }
 
   /* <!-- ----------------------------  SKILLS-END          --------------------------- ------> */
@@ -455,6 +451,7 @@
       font-size: 2rem;
       margin-bottom: 20px;
       margin-top: 100px;
+
   }
 
   .contact-details {
@@ -463,15 +460,18 @@
       text-align: center;
       flex-direction: column;
       align-items: center;
+
   }
 
   .contact-details p {
       margin: 10px 0;
       font-size: 1.2rem;
+
   }
 
   .contact-details a {
       text-decoration: none;
+
   }
 
   .contact-details a:hover {
@@ -482,14 +482,16 @@
       font-weight: 600;
       color: #d75d5d;
       padding-right: 8px;
+
   }
 
   #right-contact {
-      width: 100%;
+      width: 70%;
       margin: auto;
       text-align: center;
       border-radius: 20px;
       padding: 20px;
+
       /* background-image: url('./Images/aa.jpg'); */
   }
 
@@ -499,6 +501,7 @@
       padding: 10px;
       object-fit: cover;
       margin: auto;
+
   }
 
   /* --------------------------------------- Conatct ------------------------------------------ */
@@ -519,6 +522,8 @@
       color: #1A237E;
       margin: 100px 0px 40px 0px;
       padding: 10px;
+
+
   }
 
   .react-activity-calendar {
@@ -528,183 +533,11 @@
       margin: auto;
       padding: auto;
       text-align: center;
-      gap: 20px
+      justify-items: center;
+      gap: 20px;
+
   }
 
-
-
-  /* < !-- ---------------------------- MEDIA QUERY --------------------------- ------> */
-
-  /* @media only screen and (max-width: 600px) {
-
-      .left-navbar {
-          padding-left: 10px;
-      }
-
-      .left-navbar #menu {
-          padding-right: 10px;
-      }
-
-      .right-navbar {
-          padding-right: 50px;
-          visibility: hidden;
-      }
-
-      .right-navbar a {
-          margin: 0px 10px 0px 10px;
-      }
-
-      #menu {
-          display: block;
-      }
-
-      #home {
-          display: block;
-      }
-
-      #left-home {
-          width: 100%;
-          margin: auto;
-      }
-
-      .contact-div>a {
-          width: 50%;
-      }
-
-      #left-home :nth-child(1) {
-          line-height: 0.2;
-      }
-
-      #left-home :nth-child(2) {
-          line-height: 0.8;
-      }
-
-      #left-home :nth-child(3) {
-          line-height: 0.8;
-      }
-
-      .contact-div {
-          display: flex;
-          gap: 20px;
-          padding-top: 20px;
-          margin-left: 50px;
-      }
-
-      #about {
-          text-align: center;
-          width: 80%;
-          padding: 20px;
-          padding-top: 80px;
-          margin: auto;
-          display: block;
-      }
-
-      #edu-card {
-          display: grid;
-          text-align: center;
-          grid-template-columns: repeat(1, 1fr);
-          width: 90%;
-          margin: auto;
-          margin-top: 30px;
-          margin-bottom: 30px;
-      }
-
-      #project-wrapper {
-          display: grid;
-          text-align: center;
-          grid-template-columns: repeat(1, 1fr);
-          width: 60%;
-          margin: auto;
-          margin-top: 20px;
-      }
-
-      #projects h1 {
-          width: 100%;
-          margin: auto;
-          padding: auto;
-          text-align: center;
-          color: #1A237E;
-      }
-
-      .project-card {
-          padding: 10px;
-      }
-
-      .project-img {
-          width: 300px;
-      }
-
-      .project-img>img {
-          width: 100%;
-          height: 150px;
-      }
-
-      #edu-card>div {
-          margin-bottom: 30px;
-      }
-
-      .react-activity-calendar {
-          display: block;
-          width: 90%;
-          margin: auto;
-          gap: 20px;
-          padding: auto;
-      }
-
-      .skills-container {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 20px;
-      }
-
-      #react-activity-calendar div {
-          width: 200px;
-      }
-
-      #github {
-          width: 95%;
-          margin: auto;
-      }
-
-      #github img {
-          width: 100%;
-      }
-
-      #contact {
-          width: 100%;
-          padding: 50px;
-      }
-
-      #right-home {
-          width: 100%;
-          margin: auto;
-      }
-  } */
-
-
-  /* @media only screen and (max-width: 480px) {
-
-
-       #drop-down {
-          visibility: visible;
-      } 
-      #menu {
-          display: block;
-      }
-
-      #left-home :nth-child(1) {
-          line-height: 0.2;
-      }
-
-      #left-home :nth-child(2) {
-          line-height: 0.8;
-
-      }
-
-      #left-home :nth-child(3) {
-          line-height: 0.8;
-      }
-  } */
 
   /* < !-- ---------------------------- MEDIA QUERY END --------------------------- ------> */
 
@@ -740,7 +573,7 @@
 
 
       #right-home {
-          width: 100%;
+          width: 90%;
           margin: auto;
           text-align: center;
       }
@@ -799,19 +632,28 @@
           display: grid;
           grid-template-columns: repeat(1, 1fr);
           text-align: center;
+          padding: auto;
+          margin: auto;
+
       }
 
       #github-streak-stats {
           width: 90%;
+          margin: auto;
+          padding: auto;
 
       }
 
       #github-streak-stats img {
           width: 100%;
+          margin: auto;
+          margin: auto;
       }
 
       #github-top-langs {
           width: 90%;
+          margin: auto;
+          margin: auto;
 
       }
 
@@ -864,14 +706,14 @@
           margin: auto;
           text-align: center;
       }
-      
+
 
       #left-home p {
           margin-left: 0%;
       }
 
       #right-home {
-          width: 100%;
+          width: 90%;
           margin: auto;
           text-align: center;
       }
@@ -941,6 +783,7 @@
 
       #project-wrapper {
           grid-template-columns: repeat(1, 1fr);
+          margin: auto;
       }
 
       #projects h1 {
@@ -953,6 +796,7 @@
 
       .project-card {
           padding: 10px;
+          margin: auto;
       }
 
       .project-img {
@@ -1027,6 +871,8 @@
       .react-activity-calendar {
           display: grid;
           grid-template-columns: repeat(1, 1fr);
+          margin: auto;
+          padding: auto;
       }
 
       #skills {
@@ -1040,6 +886,7 @@
   @media only screen and (min-width: 768px) and (max-width: 1024px) {
       .navbar {
           width: 100%;
+          border: 1px solid red;
       }
 
       #home {
@@ -1063,11 +910,12 @@
           display: flex;
           gap: 10px;
           padding-top: 20px;
-          margin-left: 50px;
+          margin: auto;
+          /* margin-left: 50px; */
       }
 
       #right-home {
-          width: 100%;
+          width: 90%;
           margin: auto;
           text-align: center;
       }
@@ -1092,6 +940,7 @@
           display: grid;
           grid-template-columns: repeat(1, 1fr);
           text-align: center;
+          margin: auto;
       }
 
       #github-streak-stats {
