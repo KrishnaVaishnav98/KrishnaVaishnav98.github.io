@@ -17,6 +17,7 @@ function linkClick() {
     } else {
         menu.style.display = "block";
     }
+
 }
 
 function downloadResume() {
