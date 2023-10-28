@@ -69,36 +69,44 @@
 
   #menu {
       display: none;
+      margin: 0px 10px 0px 3px;
   }
+
 
   #menu img {
       width: 30px;
-      margin: 0px 10px 0px 0px;
+      /* margin: 0px 10px 0px 10px; */
   }
 
   #drop-down {
       position: absolute;
       visibility: hidden;
-      top: -70px;
-      left: 50px;
-      background-color: rgb(246, 246, 251, 0.9);
+      top: 52px;
+      left: 0px;
+      background-color: rgba(241, 243, 251, 0.9);
+      background-color: rgba(252, 249, 255, 0.8);
       box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-      border-radius: 20px;
+      /* border-radius: 20px; */
       padding: 10px;
+      margin: auto;
+      padding: auto;
+      border-bottom-right-radius: 80px 80px
   }
 
   .drop-down-list {
-      margin-top: 80px;
-      width: 100px;
+      /* margin-top: 80px; #fcf9ff;*/
+      width: 200px;
   }
 
   .drop-down-list a {
       text-decoration: none;
       display: block;
       width: 100px;
-      color: #303360;
+      color: #602929;
       font-weight: 600;
       margin: auto;
+      padding: 10px;
+      font-weight: bolder;
   }
 
   /* < !-- ---------------------------- NAVBAR END --------------------------- ------> */
@@ -882,7 +890,7 @@
       }
   }
 
-  /* Media Query for Tablets Ipads portrait mode  */
+  /* Media Query for Tablets  */
   @media only screen and (min-width: 768px) and (max-width: 1024px) {
       .navbar {
           width: 100%;
