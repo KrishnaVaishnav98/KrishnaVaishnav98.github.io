@@ -882,7 +882,7 @@
       }
   }
 
-  /* Media Query for Tablets Ipads portrait mode  */
+  /* Media Query for Tablets  */
   @media only screen and (min-width: 768px) and (max-width: 1024px) {
       .navbar {
           width: 100%;
