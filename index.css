@@ -363,11 +363,14 @@
   #project-link {
       display: flex;
       justify-content: space-around;
+      padding: 20px 0px;
   }
+
 
   #project-link a {
       text-decoration: none;
-      background-color: #e3e5fc;
+      background-color: #1A237E;
+      color: white;
       padding: 8px 15px;
       border-radius: 5px;
       font-weight: 500;
