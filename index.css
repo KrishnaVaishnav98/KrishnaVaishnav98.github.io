@@ -4,9 +4,6 @@
   body {
       margin: 0px;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      /* background-size: cover; */
-
-      /* background-image: url('https://cdn.pnghd.pics/data/909/white-background-wallpaper-17.jpg') */
   }
 
   .navbar {
@@ -81,12 +78,12 @@
   #drop-down {
       position: absolute;
       visibility: hidden;
+      display: block;
       top: 52px;
       left: 0px;
       background-color: rgba(241, 243, 251, 0.9);
       background-color: rgba(252, 249, 255, 0.8);
       box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-      /* border-radius: 20px; */
       padding: 10px;
       margin: auto;
       padding: auto;
@@ -94,7 +91,6 @@
   }
 
   .drop-down-list {
-      /* margin-top: 80px; #fcf9ff;*/
       width: 200px;
   }
 
@@ -243,11 +239,6 @@
       line-height: 27px;
   }
 
-  .abt-title:hover {
-      background-color: #fbf2f2;
-      border-radius: 10px;
-  }
-
   #about-content {
       width: 50%;
       margin-top: 60px;
@@ -292,13 +283,6 @@
       text-align: center;
   }
 
-  .education-section h1:hover {
-      width: 50%;
-      background-color: #fbf2f2;
-      padding: 10px;
-      border-radius: 10px;
-  }
-
   .education-section h2 {
       color: rgb(58, 57, 57);
   }
@@ -307,7 +291,7 @@
       width: 90%;
       margin: auto;
       border-radius: 10px;
-      border: 1px solid #c5c6da;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   }
 
   #edu-card>div:hover {
@@ -322,6 +306,7 @@
   #projects {
       margin: auto;
       text-align: center;
+      padding-top: 50px;
   }
 
   #projects h1 {
@@ -330,11 +315,6 @@
       text-align: center;
       color: #1A237E;
       padding: 10px;
-  }
-
-  #projects h1:hover {
-      background-color: #fbf2f2;
-      border-radius: 10px;
   }
 
   #project-wrapper {
@@ -363,8 +343,6 @@
 
   .project-img>img {
       width: 100%;
-      height: 300px;
-      /* border: 1px solid #b1b2bd; */
       box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
       border-radius: 10px;
   }
@@ -382,8 +360,54 @@
 
   }
 
-  /* <!-- ----------------------------  PROJECT-END          --------------------------- ------> */
+  #project-link {
+      display: flex;
+      justify-content: space-around;
+  }
 
+  #project-link a {
+      text-decoration: none;
+      background-color: #e3e5fc;
+      padding: 8px 15px;
+      border-radius: 5px;
+      font-weight: 500;
+      position: relative;
+  }
+
+  #project-link a:hover::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #1A237E, #233FEB, #1A237E, #233FEB, #1A237E);
+      background-size: 400% 400%;
+      animation: glitter 1.5s ease infinite;
+      border-radius: 5px;
+  }
+
+  #project-link a:hover {
+      color: #fff;
+  }
+
+  #project-link a div {
+      position: relative;
+      z-index: 1;
+  }
+
+  @keyframes glitter {
+      0% {
+          background-position: 0% 0;
+      }
+
+      100% {
+          background-position: 400% 400%;
+      }
+  }
+
+
+  /* <!-- ----------------------------  PROJECT-END          --------------------------- ------> */
 
 
   /* <!-- ----------------------------  SKILLS         --------------------------- ------> */
@@ -391,8 +415,7 @@
       width: 50%;
       margin: auto;
       text-align: center;
-      margin-top: 100px;
-
+      padding-top: 100px;
   }
 
   #skills h1 {
@@ -400,14 +423,8 @@
       text-align: center;
       color: #1A237E;
       padding: 10px;
-
   }
 
-  #skills h1:hover {
-      background-color: #fbf2f2;
-      border-radius: 10px;
-
-  }
 
   #skills h2 {
       margin: auto;
@@ -499,8 +516,6 @@
       text-align: center;
       border-radius: 20px;
       padding: 20px;
-
-      /* background-image: url('./Images/aa.jpg'); */
   }
 
   #right-contact>img {
@@ -530,8 +545,6 @@
       color: #1A237E;
       margin: 100px 0px 40px 0px;
       padding: 10px;
-
-
   }
 
   .react-activity-calendar {
@@ -555,7 +568,6 @@
           width: 100%;
       }
 
-
       #home {
           display: flex;
           flex-direction: column;
@@ -577,8 +589,24 @@
           display: flex;
           gap: 10px;
           padding-top: 20px;
+          padding-bottom: 20px;
       }
 
+      .contact-div>a {
+          width: 25px;
+      }
+
+      .contact-div div img {
+          width: 100%;
+      }
+
+      #resume-link-2 {
+          font-size: 10px;
+          width: 100px;
+          padding: auto;
+          padding: 8px;
+          border-radius: 5px;
+      }
 
       #right-home {
           width: 90%;
@@ -596,20 +624,32 @@
 
       #left-home :nth-child(1) {
           line-height: 0.2;
+          font-size: 20px;
       }
 
       #left-home :nth-child(2) {
           line-height: 0.8;
+          font-size: 30px;
       }
 
       #left-home :nth-child(3) {
           line-height: 0.8;
+          font-size: 20px;
+      }
+
+      #left-home :nth-child(4) {
+          font-size: 12px;
       }
 
       #about {
           display: flex;
           flex-direction: column;
           width: 80%;
+      }
+
+      .abt-desc {
+          font-size: 14px;
+          line-height: 20px;
       }
 
       #about-content {
@@ -626,14 +666,22 @@
           grid-template-columns: repeat(1, 1fr);
       }
 
-
       #project-wrapper {
           grid-template-columns: repeat(1, 1fr);
       }
 
+      #projects {
+          padding-top: 50px;
+      }
+
+
       #github {
           width: 100%;
           text-align: center;
+      }
+
+      #skills {
+          padding-top: 50px;
       }
 
       .react-activity-calendar {
@@ -702,6 +750,10 @@
           width: 100%;
       }
 
+      .right-navbar {
+          display: none;
+      }
+
       #home {
           display: flex;
           flex-direction: column;
@@ -764,10 +816,12 @@
 
       #left-home :nth-child(1) {
           line-height: 0.2;
+          font-size: 25px;
       }
 
       #left-home :nth-child(2) {
-          line-height: 0.8;
+          line-height: 0.6;
+          font-size: 30px;
       }
 
       #left-home :nth-child(3) {
@@ -776,9 +830,8 @@
 
       .contact-div {
           display: flex;
-          gap: 20px;
+          gap: 10px;
           padding-top: 20px;
-          margin-left: 50px;
       }
 
       #edu-card {
@@ -1026,6 +1079,3 @@
           display: none;
       }
   }
-
-  /* Media Query for Laptops and Desktops  */
-  /* @media only screen and (min-width: 1025px) {} */
