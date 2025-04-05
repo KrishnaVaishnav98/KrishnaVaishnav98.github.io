@@ -19,11 +19,14 @@ function linkClick() {
     }
 
 }
-
 function downloadResume() {
-    window.location.href = "https://drive.google.com/uc?export=download&id=1nvRdRxCb4_UtIl-dbHmFUNQeQNkV4F3U";
+    const link = document.createElement('a');
+    link.href = "https://drive.google.com/uc?export=download&id=1UhEjUnTBzAx8JpZ0niyOSJrCaNXImchC";
+    link.download = 'Krishna-Vaishnav-Resume.pdf'; // Optional: desired file name
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }
-
 
 
 
