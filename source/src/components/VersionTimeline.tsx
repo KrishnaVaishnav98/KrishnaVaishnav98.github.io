@@ -1,161 +1,116 @@
 "use client";
 
 import { motion } from "framer-motion";
-import TerminalWindow from "./TerminalWindow";
+import SectionNumber from "./SectionNumber";
 
-const versions = [
+const milestones = [
   {
-    version: "v1",
-    branch: "origin/civil-engineering",
-    date: "2016–2020",
-    title: "The Beginning",
-    commitMsg: "feat: graduate from Uka Tarsadia University (9.44 CGPA)",
-    files: ["AutoCAD", "Excel", "Concrete & Steel"],
-    diff: [
-      { type: "add", text: "B.Tech Civil Engineering — Bardoli, Gujarat" },
-      { type: "add", text: "Engineering mindset: think in systems" },
-      { type: "rem", text: "Any knowledge of what a <div> is" },
-    ],
-    color: "text-red",
+    period: "Dec 2023 – Present",
+    title: "SDE — Frontend Developer",
+    company: "K12 Techno Services",
+    location: "Bengaluru",
+    description: "Leading frontend for Orchids International (60% of modules), SchoolsUniverse, ERP systems, and scholarship platforms. Optimized Core Web Vitals, improved SEO from 58 to 96.",
+    color: "#34d399",
+    current: true,
   },
   {
-    version: "v2",
-    branch: "origin/masai-school",
-    date: "2022–2023",
-    title: "The Career Switch",
-    commitMsg: "feat: complete Full Stack Web Development at Masai School",
-    files: ["HTML", "CSS", "JavaScript", "React", "Node.js", "MongoDB"],
-    diff: [
-      { type: "add", text: "Intensive bootcamp — Bengaluru, Karnataka" },
-      { type: "add", text: "Components, state management, REST APIs" },
-      { type: "add", text: "Built 4 projects from scratch" },
-      { type: "rem", text: "Thinking I know everything after learning React" },
-    ],
-    color: "text-yellow",
+    period: "Dec 2022 – Sep 2023",
+    title: "Full Stack Web Development",
+    company: "Masai School",
+    location: "Bengaluru",
+    description: "Intensive full-stack bootcamp. Built 4 production projects: CodeFuse (AI interview platform with GPT-3), Money Mentor (led 5-member team), SchoolSync, Skinnetics.",
+    color: "#60a5fa",
   },
   {
-    version: "v3",
-    branch: "origin/first-projects",
-    date: "2023",
-    title: "First Real Projects",
-    commitMsg: "feat: ship CodeFuse, Money Mentor, SchoolSync, Skinnetics to prod",
-    files: ["React", "Redux", "TypeScript", "Firebase", "Tailwind", "Spring Boot"],
-    diff: [
-      { type: "add", text: "Led 5-member team on Money Mentor" },
-      { type: "add", text: "AI-powered interview platform (GPT-3)" },
-      { type: "add", text: "Role-based auth, real-time features" },
-      { type: "rem", text: "Building only for assignments, not users" },
-    ],
-    color: "text-accent",
-  },
-  {
-    version: "v4",
-    branch: "origin/k12-techno",
-    date: "Dec 2023–2024",
-    title: "Professional Work",
-    commitMsg: "feat: join K12 Techno Services as SDE1, ship Orchids + MyNOST",
-    files: ["Next.js", "React", "Tailwind CSS", "Ant Design", "Redux", "ISR"],
-    diff: [
-      { type: "add", text: "Led frontend for education platforms used across India" },
-      { type: "add", text: "Built 60% of Orchids website modules" },
-      { type: "add", text: "Solo-built MyNOST scholarship platform in 2 days" },
-      { type: "add", text: "Improved Core Web Vitals (LCP, CLS) & SEO rankings" },
-      { type: "rem", text: "Ignoring performance until production" },
-    ],
-    color: "text-purple",
-  },
-  {
-    version: "v5",
-    branch: "origin/current",
-    date: "2025 — Present",
-    title: "Current Me",
-    commitMsg: "feat: ERP systems, live tracking, scholarship platforms at scale",
-    files: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Ant Design", "Redux", "LocoNav"],
-    diff: [
-      { type: "add", text: "ERP Finance — live bus tracking with map integration" },
-      { type: "add", text: "ERP Eduvate — announcements + assessment systems" },
-      { type: "add", text: "NammaSuper30 — Karnataka scholarship platform" },
-      { type: "add", text: "SchoolsUniverse — school listing & comparison" },
-      { type: "add", text: "DIYWebMaker — drag-and-drop website builder for schools" },
-      { type: "rem", text: "Writing code I can't maintain 6 months later" },
-    ],
-    color: "text-green",
+    period: "Jun 2016 – Dec 2020",
+    title: "B.Tech Civil Engineering",
+    company: "Uka Tarsadia University",
+    location: "Gujarat · 9.44 CGPA",
+    description: "Engineering fundamentals that shaped how I approach systems and problem-solving.",
+    color: "#a78bfa",
   },
 ];
 
 export default function VersionTimeline() {
+  const current = milestones[0];
+  const past = milestones.slice(1);
+
   return (
-    <section id="journey" className="py-24 px-4 md:px-6">
-      <div className="max-w-4xl mx-auto">
+    <section className="relative min-h-screen overflow-hidden">
+      <SectionNumber number="04" label="Experience" />
+
+      <div className="min-h-screen px-6 md:px-12 lg:px-16 pt-28 md:pt-32 pb-16">
+        {/* Heading */}
+        <div className="mb-10 md:mb-14">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-2">
+            My
+          </h2>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-light text-muted tracking-tight">
+            <span className="font-serif italic">journey</span> so far.
+          </h2>
+        </div>
+
+        {/* Featured current role */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-12 font-mono text-sm"
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="relative rounded-3xl bg-gradient-to-br from-emerald-500/10 to-teal-500/5 border border-emerald-500/20 p-6 md:p-10 mb-8 backdrop-blur-sm overflow-hidden"
         >
-          <span className="text-green">$</span>{" "}
-          <span className="text-muted">git log --oneline --graph krishna-career</span>
+          {/* "Now" badge */}
+          <div className="absolute top-4 right-4 inline-flex items-center gap-1.5 text-[10px] font-semibold px-2.5 py-1 rounded-full bg-success/20 text-success">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-success" />
+            </span>
+            Currently
+          </div>
+
+          <p className="text-xs text-muted-foreground mb-3">{current.period}</p>
+          <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
+            {current.title}
+          </h3>
+          <p className="text-base md:text-lg mb-1" style={{ color: current.color }}>
+            {current.company}
+          </p>
+          <p className="text-xs text-muted-foreground mb-4">{current.location}</p>
+          <p className="text-sm md:text-base text-muted leading-relaxed max-w-3xl">
+            {current.description}
+          </p>
         </motion.div>
 
-        <div className="space-y-8">
-          {versions.map((v, i) => (
+        {/* Past roles — smaller, in a grid */}
+        <div className="grid md:grid-cols-2 gap-4">
+          {past.map((m, i) => (
             <motion.div
-              key={v.version}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
+              key={m.period}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="relative rounded-2xl bg-card/40 border border-border p-5 md:p-6 hover:-translate-y-0.5 transition-all duration-300 backdrop-blur-sm"
+              style={{ borderLeftColor: m.color, borderLeftWidth: "2px" }}
             >
-              <TerminalWindow title={`${v.branch} — ${v.version}`} delay={i * 0.05}>
-                {/* Commit header */}
-                <div className="font-mono text-xs space-y-2">
-                  <div className="flex flex-wrap items-center gap-2 mb-3">
-                    <span
-                      className={`px-2 py-0.5 rounded-full text-[10px] font-bold border ${
-                        v.color
-                      } border-current/20 bg-current/5`}
-                    >
-                      {v.version}
-                    </span>
-                    <span className="text-muted/70">{v.date}</span>
-                    <span className="text-muted/50">•</span>
-                    <span className="text-muted/60">{v.title}</span>
-                  </div>
-
-                  {/* Commit message */}
-                  <div className="text-yellow text-sm mb-3">
-                    {v.commitMsg}
-                  </div>
-
-                  {/* Files changed */}
-                  <div className="text-muted/70 mb-2">
-                    {v.files.length} files changed:{" "}
-                    <span className="text-muted/60">
-                      {v.files.join(", ")}
-                    </span>
-                  </div>
-
-                  {/* Diff */}
-                  <div className="bg-background/50 rounded-md p-3 space-y-0.5 border border-card-border">
-                    {v.diff.map((d, j) => (
-                      <div
-                        key={j}
-                        className={`font-mono ${
-                          d.type === "add"
-                            ? "text-green"
-                            : "text-red"
-                        }`}
-                      >
-                        {d.type === "add" ? "+" : "-"} {d.text}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </TerminalWindow>
+              <p className="text-[10px] text-muted-foreground mb-2 uppercase tracking-widest">
+                {m.period}
+              </p>
+              <h3 className="text-base md:text-lg font-bold tracking-tight mb-1">
+                {m.title}
+              </h3>
+              <p className="text-xs mb-3" style={{ color: m.color }}>
+                {m.company} · <span className="text-muted-foreground">{m.location}</span>
+              </p>
+              <p className="text-xs md:text-sm text-muted leading-relaxed">
+                {m.description}
+              </p>
             </motion.div>
           ))}
         </div>
       </div>
+
+      {/* Decorative grid */}
+      <div className="pointer-events-none absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)] bg-[size:80px_80px]" />
     </section>
   );
 }

@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import CommandPalette from "@/components/CommandPalette";
-import ThemeToggle from "@/components/ThemeToggle";
+import CustomCursor from "@/components/CustomCursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Krishna Vaishnav | SDE1 — Frontend Developer",
+  title: "Krishna Vaishnav — Frontend Developer",
   description:
-    "Built in Public: Krishna v1 → v5. SDE1 at K12 Techno Services, Bengaluru. Building education platforms used by thousands across India.",
+    "SDE at K12 Techno Services, Bengaluru. Building education platforms used by thousands of students across India.",
 };
 
 export default function RootLayout({
@@ -31,10 +31,16 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="noise min-h-full flex flex-col pt-8">
+      <body className="min-h-full overflow-hidden">
+        <div className="mesh-gradient">
+          <div className="orb" />
+          <div className="orb" />
+          <div className="orb" />
+        </div>
+
+        <CustomCursor />
         <Navbar />
         <CommandPalette />
-        <ThemeToggle />
         {children}
       </body>
     </html>

@@ -1,197 +1,146 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import TerminalWindow from "./TerminalWindow";
+import SectionNumber from "./SectionNumber";
 
-const contactCommands = [
-  {
-    cmd: "email",
-    output: "krishnavaishnav125@gmail.com",
-    href: "mailto:krishnavaishnav125@gmail.com",
-    color: "text-orange",
-  },
-  {
-    cmd: "phone",
-    output: "+91 7041704194",
-    href: "tel:+917041704194",
-    color: "text-green",
-  },
-  {
-    cmd: "github",
-    output: "github.com/KrishnaVaishnav98",
-    href: "https://github.com/KrishnaVaishnav98",
-    color: "text-cyan",
-  },
-  {
-    cmd: "linkedin",
-    output: "linkedin.com/in/krishna-vaishnav-707ab1144",
-    href: "https://www.linkedin.com/in/krishna-vaishnav-707ab1144/",
-    color: "text-accent",
-  },
-  {
-    cmd: "location",
-    output: "Bengaluru, Karnataka, India",
-    href: "",
-    color: "text-yellow",
-  },
-  {
-    cmd: "resume",
-    output: "→ Download Resume (opens in new tab + auto-downloads)",
-    href: "https://drive.google.com/file/d/1ILLDrSitZimLm417V5MaVDDgXHWgrVG5/view?usp=sharing",
-    downloadHref: "https://drive.google.com/uc?export=download&id=1ILLDrSitZimLm417V5MaVDDgXHWgrVG5",
-    color: "text-purple",
-  },
+const links = [
+  { label: "GitHub", value: "KrishnaVaishnav98", href: "https://github.com/KrishnaVaishnav98" },
+  { label: "LinkedIn", value: "Krishna Vaishnav", href: "https://www.linkedin.com/in/krishna-vaishnav-707ab1144/" },
+  { label: "Phone", value: "+91 7041704194", href: "tel:+917041704194" },
 ];
 
 export default function Contact() {
-  const [typedCmd, setTypedCmd] = useState("");
-  const [history, setHistory] = useState<string[]>([]);
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && typedCmd.trim()) {
-      const cmd = typedCmd.trim().toLowerCase();
-      setHistory((h) => [...h, cmd]);
-      setTypedCmd("");
-
-      const match = contactCommands.find((c) => c.cmd === cmd);
-      if (match?.href) {
-        setTimeout(() => {
-          window.open(match.href, match.cmd === "email" || match.cmd === "phone" ? "_self" : "_blank");
-          if ("downloadHref" in match && match.downloadHref) {
-            const a = document.createElement("a");
-            a.href = match.downloadHref as string;
-            a.download = "Krishna-Vaishnav-Resume.pdf";
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-          }
-        }, 300);
-      }
-    }
-  };
-
   return (
-    <section id="contact" className="py-24 px-4 md:px-6">
-      <div className="max-w-3xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+    <section className="relative min-h-screen overflow-hidden">
+      <SectionNumber number="06" label="Contact" />
+
+      <div className="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-16 pt-28 md:pt-32 pb-16">
+        {/* Top label */}
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-8 font-mono text-sm"
+          className="text-xs text-accent font-medium tracking-widest uppercase mb-6"
         >
-          <span className="text-green">$</span>{" "}
-          <span className="text-muted">krishna --contact</span>
-        </motion.div>
+          Let&apos;s talk
+        </motion.p>
 
-        <TerminalWindow title="contact@krishna ~ %">
-          <div className="font-mono text-xs space-y-3">
-            <div className="text-muted/70 mb-4">
-              // Type a command to connect. Available: email, phone, github, linkedin, location, resume
-            </div>
+        {/* Heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-2"
+        >
+          Got a project
+        </motion.h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="text-3xl md:text-5xl lg:text-6xl font-light text-muted tracking-tight mb-12 md:mb-16"
+        >
+          in mind? <span className="font-serif italic">Drop me a line.</span>
+        </motion.h2>
 
-            {contactCommands.map((c, i) => (
-              <motion.div
-                key={c.cmd}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
+        {/* MASSIVE clickable email */}
+        <motion.a
+          href="mailto:krishnavaishnav125@gmail.com"
+          data-hover
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="group inline-block w-fit text-[2rem] md:text-[4rem] lg:text-[6rem] font-bold tracking-tighter leading-none mb-12 md:mb-16 break-all md:break-normal"
+        >
+          <span className="relative inline-block">
+            <span className="text-muted group-hover:text-foreground transition-colors duration-500">
+              krishnavaishnav125
+            </span>
+            <span className="text-accent group-hover:text-accent-hover transition-colors duration-500">
+              @gmail
+            </span>
+            <span className="text-muted group-hover:text-foreground transition-colors duration-500">
+              .com
+            </span>
+            {/* Underline that draws on hover */}
+            <span className="absolute left-0 -bottom-2 h-[3px] md:h-[4px] w-0 group-hover:w-full bg-accent transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]" />
+          </span>
+          <span className="inline-block ml-4 text-base md:text-2xl text-accent transition-transform duration-500 group-hover:translate-x-2">
+            ↗
+          </span>
+        </motion.a>
+
+        {/* Bottom row — quick links + resume */}
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-12 items-end pt-8 border-t border-border">
+          {/* Quick links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            className="grid grid-cols-3 gap-4 md:gap-8"
+          >
+            {links.map((l) => (
+              <a
+                key={l.label}
+                href={l.href}
+                target={l.label === "Phone" ? undefined : "_blank"}
+                rel="noopener noreferrer"
+                data-hover
+                className="group"
               >
-                <div className="flex items-start gap-2">
-                  <span className="text-green">$</span>
-                  <span className="text-muted">krishna --{c.cmd}</span>
-                </div>
-                <div className="pl-5">
-                  {c.href ? (
-                    <a
-                      href={c.href}
-                      target={c.cmd === "email" || c.cmd === "phone" ? "_self" : "_blank"}
-                      rel="noopener noreferrer"
-                      className={`${c.color} hover:underline`}
-                      onClick={"downloadHref" in c && c.downloadHref ? (e) => {
-                        e.preventDefault();
-                        window.open(c.href, "_blank");
-                        const a = document.createElement("a");
-                        a.href = c.downloadHref as string;
-                        a.download = "Krishna-Vaishnav-Resume.pdf";
-                        document.body.appendChild(a);
-                        a.click();
-                        document.body.removeChild(a);
-                      } : undefined}
-                    >
-                      {c.output}
-                    </a>
-                  ) : (
-                    <span className={c.color}>{c.output}</span>
-                  )}
-                </div>
-              </motion.div>
+                <p className="text-[10px] text-muted-foreground uppercase tracking-widest mb-1.5">
+                  {l.label}
+                </p>
+                <p className="text-xs md:text-sm text-foreground group-hover:text-accent transition-colors truncate">
+                  {l.value} <span className="opacity-50 group-hover:opacity-100 inline-block transition-transform duration-300 group-hover:translate-x-0.5">↗</span>
+                </p>
+              </a>
             ))}
+          </motion.div>
 
-            {/* Interactive input */}
-            <div className="pt-4 border-t border-card-border mt-4">
-              <div className="text-muted/60 mb-2">
-                // try it yourself — type: email, github, linkedin, resume
-              </div>
-              {history.map((cmd, i) => {
-                const match = contactCommands.find((c) => c.cmd === cmd);
-                return (
-                  <div key={i} className="mb-1">
-                    <div className="flex gap-2">
-                      <span className="text-green">$</span>
-                      <span className="text-muted">krishna --{cmd}</span>
-                    </div>
-                    <div className="pl-5">
-                      {match ? (
-                        <span className={match.color}>
-                          {match.output}
-                          {match.href && " ✓ opening..."}
-                        </span>
-                      ) : (
-                        <span className="text-red">
-                          error: unknown command &quot;{cmd}&quot;. try: email, phone, github, linkedin, location, resume
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-              <div className="flex items-center gap-2">
-                <span className="text-green">$</span>
-                <span className="text-muted">krishna --</span>
-                <input
-                  type="text"
-                  value={typedCmd}
-                  onChange={(e) => setTypedCmd(e.target.value)}
-                  onKeyDown={handleKeyDown}
-                  placeholder="type a command..."
-                  className="flex-1 bg-transparent text-foreground outline-none placeholder:text-muted/50 font-mono text-xs"
-                />
-                <span className="cursor-blink text-accent">▊</span>
-              </div>
-            </div>
-          </div>
-        </TerminalWindow>
+          {/* Resume CTA */}
+          <motion.a
+            href="https://drive.google.com/file/d/1ILLDrSitZimLm417V5MaVDDgXHWgrVG5/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-hover
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.7 }}
+            onClick={() => {
+              const a = document.createElement("a");
+              a.href = "https://drive.google.com/uc?export=download&id=1ILLDrSitZimLm417V5MaVDDgXHWgrVG5";
+              a.download = "Krishna-Vaishnav-Resume.pdf";
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+            }}
+            className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background text-sm font-medium hover:scale-105 transition-all duration-300 w-fit"
+          >
+            Download Resume
+            <span className="transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
+          </motion.a>
+        </div>
 
-        {/* Footer */}
-        <motion.div
+        {/* Footer line */}
+        <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-16 pt-6 border-t border-card-border text-center font-mono text-[10px] text-muted/50 space-y-1"
+          transition={{ delay: 0.9 }}
+          className="mt-12 text-[10px] text-muted-foreground"
         >
-          <p>
-            built by krishna vaishnav — with next.js, tailwind, framer-motion, and honest reflection
-          </p>
-          <p>
-            this portfolio is also a project. v5 of many more to come.
-          </p>
-          <p className="pt-2 text-muted/10">
-            © {new Date().getFullYear()} • process exited with code 0
-          </p>
-        </motion.div>
+          Based in Bengaluru, Karnataka · Available worldwide
+        </motion.p>
       </div>
+
+      {/* Decorative grid */}
+      <div className="pointer-events-none absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)] bg-[size:80px_80px]" />
     </section>
   );
 }
