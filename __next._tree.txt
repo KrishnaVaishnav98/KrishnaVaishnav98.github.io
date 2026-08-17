@@ -1,7 +1,5 @@
-:HL["/_next/static/chunks/0b01c-fz76v05.css","style"]
-:HL["/_next/static/media/03bda585a99c6450-s.p.0zzh68k1~whtc.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/_next/static/media/0fcab32fcfb2da9d-s.p.00j~a2fulyg0h.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/_next/static/media/5c285b27cdda1fe8-s.p.0yo6-5yoeeudq.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/_next/static/media/970c428219233a3d-s.p.0rd_2wajwd4c3.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/chunks/0.prlkhufsq1c.css","style"]
+:HL["/_next/static/media/017d9bea37084d9b-s.p.179.vsfvxa6t5.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/1b99372b3eaef0c8-s.p.0gx2haw2tmll8.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/krishna-profile.jpeg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"HtAUz92-2y8BXhH-0fl9w"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"zBk9MMx_Hc3eKsdYpg0zm"}

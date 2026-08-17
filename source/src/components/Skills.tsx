@@ -1,109 +1,91 @@
 import Reveal from "./Reveal";
-import { Squiggle, StarSticker } from "./doodles";
+import { AtomIcon, WaveIcon, LeafIcon, BranchIcon, HexIcon } from "./icons";
 
-const skills = [
-  {
-    name: "React.js & Next.js",
-    level: "Expert",
-    note: "SSR, ISR and Core Web Vitals — my home turf.",
-  },
-  {
-    name: "JavaScript / ES6+",
-    level: "Advanced",
-    note: "Clean, readable code. Rarely any red marks in the console.",
-  },
-  {
-    name: "CSS & Tailwind",
-    level: "Advanced",
-    note: "Pixel-perfect layouts. Margins always aligned.",
-  },
-  {
-    name: "Redux & State Management",
-    level: "Advanced",
-    note: "Keeps complex app state firmly under control.",
-  },
-  {
-    name: "Python, Django & DRF",
-    level: "Proficient",
-    note: "Newest addition to the stack — already shipping production APIs.",
-    fresh: true,
-  },
-  {
-    name: "PostgreSQL & MongoDB",
-    level: "Proficient",
-    note: "Schema design, migrations and query tuning.",
-  },
-  {
-    name: "Git, Postman & Tooling",
-    level: "Advanced",
-    note: "Disciplined commits, thorough API testing.",
-  },
+type Tile = {
+  name: string;
+  level: string;
+  bg: string;
+  glyph: React.ReactNode;
+};
+
+const tiles: Tile[] = [
+  { name: "React", level: "Expert", bg: "#0e2a3a", glyph: <AtomIcon className="h-9 w-9" /> },
+  { name: "Next.js", level: "Expert", bg: "#111", glyph: <span className="font-display text-xl font-bold text-white">N</span> },
+  { name: "JavaScript", level: "Advanced", bg: "#f7df1e", glyph: <span className="font-display text-lg font-bold text-[#222]">JS</span> },
+  { name: "Tailwind", level: "Advanced", bg: "#0f172a", glyph: <WaveIcon className="h-9 w-9" /> },
+  { name: "Redux", level: "Advanced", bg: "#764abc", glyph: <span className="font-display text-lg font-bold text-white">Rx</span> },
+  { name: "Django", level: "Proficient", bg: "#092e20", glyph: <span className="font-display text-lg font-bold text-white">dj</span> },
+  { name: "PostgreSQL", level: "Proficient", bg: "#336791", glyph: <span className="font-display text-lg font-bold text-white">Pg</span> },
+  { name: "MongoDB", level: "Proficient", bg: "#001e2b", glyph: <LeafIcon className="h-9 w-9" /> },
+  { name: "Node.js", level: "Proficient", bg: "#233329", glyph: <HexIcon className="h-9 w-9" /> },
+  { name: "Git", level: "Advanced", bg: "#f05033", glyph: <BranchIcon className="h-8 w-8" /> },
+];
+
+const notes = [
+  { title: "React.js & Next.js", body: "SSR, ISR and Core Web Vitals — production experience at scale.", color: "#2f6bff" },
+  { title: "JavaScript / ES6+", body: "Modern, strict and readable patterns across large codebases.", color: "#ff7a59" },
+  { title: "CSS & Tailwind", body: "Pixel-accurate, responsive builds from design to production.", color: "#2ec99b" },
+  { title: "Redux & State", body: "Predictable state across large role-based applications.", color: "#a78bfa" },
+  { title: "Django & DRF", body: "Payment APIs, models and serializers — running in production.", color: "#ffc531" },
+  { title: "PostgreSQL & MongoDB", body: "Schema design, migrations and query optimisation.", color: "#2fc4b2" },
 ];
 
 export default function Skills() {
   return (
-    <section id="skills" className="relative px-4 py-20 lg:pl-24">
-      <div className="mx-auto max-w-4xl">
-        <Reveal className="text-center lg:text-left">
-          <p className="font-hand text-2xl text-pen">An honest self-assessment —</p>
-          <h2 className="mt-1 inline-block text-4xl font-semibold tracking-tight sm:text-5xl">
-            Skills
+    <section id="skills" className="relative px-4 py-24">
+      <div className="mx-auto max-w-5xl">
+        <Reveal className="text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue">
+            Tech stack
+          </p>
+          <h2 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
+            Tools I ship with
           </h2>
-          <Squiggle className="mx-auto mt-1 block w-40 text-redpen/60 lg:mx-0" />
+          <p className="mx-auto mt-4 max-w-xl text-ink/65">
+            The everyday stack — frontend depth, growing backend ownership,
+            everything below is in production use today.
+          </p>
         </Reveal>
 
         <Reveal delay={150}>
-          <div className="relative mt-10 rounded-lg border-4 border-double border-ink/25 bg-card p-6 shadow-[0_24px_60px_-28px_rgba(35,44,67,0.45)] sm:p-10">
-            <StarSticker className="-right-3 -top-3 w-11 rotate-12" />
-
-            {/* header row like an official document */}
-            <div className="flex flex-wrap items-baseline justify-center gap-2 border-b-2 border-ink/15 pb-4 text-center sm:justify-between sm:text-left">
-              <p className="font-serif text-sm font-semibold uppercase tracking-[0.18em] text-ink/60">
-                Skill Matrix · Full-Stack Development
-              </p>
-              <p className="font-hand text-lg text-pen">
-                Krishna Vaishnav
-              </p>
-            </div>
-
-            <ul className="divide-y divide-dashed divide-ink/15">
-              {skills.map((s, i) => (
-                <li
-                  key={s.name}
-                  className="grid grid-cols-[1fr_auto] items-center gap-x-4 gap-y-1 py-4 sm:grid-cols-[220px_1fr_auto]"
-                >
-                  <span className="font-semibold text-ink">
-                    {s.name}
-                    {s.fresh && (
-                      <span className="ml-2 align-middle font-hand text-sm font-bold text-redpen">
-                        new this year!
-                      </span>
-                    )}
-                  </span>
-                  <span className="col-span-2 text-sm leading-relaxed text-ink/65 sm:col-span-1 sm:col-start-2 sm:row-start-1">
-                    <span className="font-hand text-base text-pen">“{s.note}”</span>
-                  </span>
-                  <span
-                    className="relative row-start-1 justify-self-end font-hand text-xl font-bold text-redpen sm:col-start-3"
-                    style={{ transform: `rotate(${i % 2 ? 2 : -2}deg)` }}
+          <div className="mx-auto mt-14 grid max-w-3xl grid-cols-3 gap-x-4 gap-y-8 sm:grid-cols-5">
+            {tiles.map((t, i) => (
+              <div
+                key={t.name}
+                className="tile flex flex-col items-center gap-2.5"
+                style={{ "--d": `${i * 70}ms` } as React.CSSProperties}
+              >
+                <div className="tile-hop" style={{ "--i": i } as React.CSSProperties}>
+                  <div
+                    className="tile-btn flex h-16 w-16 cursor-default items-center justify-center rounded-2xl shadow-[0_14px_28px_-14px_rgba(28,41,64,0.5)]"
+                    style={{ backgroundColor: t.bg }}
+                    title={`${t.name} — ${t.level}`}
                   >
-                    {s.level}
-                  </span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-6 flex flex-wrap items-end justify-between gap-6 border-t-2 border-ink/15 pt-6">
-              <div>
-                <p className="fill-line inline-block pb-1 font-hand text-xl text-ink/70">
-                  Reviewed by: Production, esq.
-                </p>
-                <p className="mt-1 text-xs text-ink/50">
-                  (strictest reviewer I know — everything above ships to real users)
+                    {t.glyph}
+                  </div>
+                </div>
+                <p className="text-sm font-semibold text-ink">{t.name}</p>
+                <p className="-mt-1.5 text-[0.65rem] font-bold uppercase tracking-wider text-ink/45">
+                  {t.level}
                 </p>
               </div>
-              <span className="stamp text-sm">Production-Tested</span>
-            </div>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal delay={250}>
+          <div className="mx-auto mt-16 grid max-w-4xl gap-x-10 gap-y-4 sm:grid-cols-2">
+            {notes.map((n) => (
+              <p key={n.title} className="flex items-start gap-3 text-sm leading-relaxed text-ink/70">
+                <span
+                  className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-sm"
+                  style={{ backgroundColor: n.color }}
+                />
+                <span>
+                  <strong className="font-semibold text-ink">{n.title}.</strong> {n.body}
+                </span>
+              </p>
+            ))}
           </div>
         </Reveal>
       </div>

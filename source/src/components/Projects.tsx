@@ -1,139 +1,144 @@
 import Reveal from "./Reveal";
-import { Squiggle, Tick } from "./doodles";
 
 type Project = {
-  no: string;
   title: string;
   category: string;
   description: string;
   tech: string[];
   impact: string;
-  stamp?: string;
-  link?: { href: string; label: string };
-  tilt: string;
+  badge?: string;
+  link: { href: string; label: string };
+  accent: string;
 };
 
 const projects: Project[] = [
   {
-    no: "01",
     title: "Orchids International School",
     category: "Flagship · Full-Stack",
     description:
-      "The main website of one of India's largest school chains — my primary product. Built Razorpay payments end-to-end: Django REST APIs for order creation and signature-verified payment confirmation, with the React/Next.js checkout UI. Plus CMS-driven marketing pages and admissions flows.",
-    tech: ["Next.js", "Django REST", "Razorpay", "PostgreSQL", "CMS"],
-    impact: "Lakhs of visitors every month.",
+      "The main website of one of India's largest school chains. Razorpay payments built end-to-end — Django REST APIs for order creation and signature-verified confirmation with the Next.js checkout UI — plus CMS-driven marketing pages and admissions flows.",
+    tech: ["Next.js", "Django REST", "Razorpay", "PostgreSQL"],
+    impact: "Lakhs of visitors every month",
     link: { href: "https://orchidsinternationalschool.com/", label: "Visit site" },
-    tilt: "-0.6deg",
+    accent: "#ff7a59",
   },
   {
-    no: "02",
     title: "SchoolsUniverse",
     category: "Flagship · Full-Stack",
     description:
-      "A discovery platform helping parents across India find the right school. Shipped the wishlist feature across the whole stack — Django models and REST APIs to Next.js UI — and pushed Core Web Vitals up with ISR and rendering optimisations.",
-    tech: ["Next.js", "Django REST", "ISR", "SEO", "Redux"],
-    impact: "Fast, findable, full-stack.",
+      "A discovery platform helping parents across India find the right school. Shipped the wishlist feature across the whole stack — Django models and REST APIs to Next.js UI — and lifted Core Web Vitals with ISR and rendering optimisations.",
+    tech: ["Next.js", "Django REST", "ISR", "Redux"],
+    impact: "Fast, findable, full-stack",
     link: { href: "https://www.schoolsuniverse.com/", label: "Visit site" },
-    tilt: "0.7deg",
+    accent: "#2f6bff",
   },
   {
-    no: "03",
     title: "Science Explorer",
-    category: "Rapid delivery · Full-Stack",
+    category: "Full-Stack",
     description:
-      "An event platform for a hands-on science experience — playful custom design, registrations wired through a Django REST API into the CMS leads dashboard. Concept to production in a single day.",
+      "An event platform for a hands-on science experience for kids — custom design, registrations wired through a Django REST API into the CMS leads dashboard. Concept to production in a single day.",
     tech: ["Next.js", "Tailwind", "Django REST"],
-    impact: "Design, build, deploy — one day.",
-    stamp: "1-Day Build",
+    impact: "Brief to production in one day",
+    badge: "Built in 1 day",
     link: { href: "https://scienceexplorer.in/", label: "Visit site" },
-    tilt: "0.9deg",
+    accent: "#2ec99b",
   },
   {
-    no: "04",
     title: "Arts At Orchids",
-    category: "Rapid delivery · Frontend",
+    category: "Frontend",
     description:
-      "An arts-programme site for Orchids International — designed, built and deployed in a week, matching the brand while standing on its own visually.",
+      "An arts-programme site for Orchids International — designed, built and deployed in a week, matching the school's brand while standing on its own visually.",
     tech: ["Next.js", "Tailwind"],
-    impact: "One week from brief to live.",
-    stamp: "1-Week Build",
+    impact: "One week from brief to live",
+    badge: "Built in 1 week",
     link: { href: "https://arts.orchidsinternationalschool.com/", label: "Visit site" },
-    tilt: "-0.8deg",
+    accent: "#a78bfa",
   },
   {
-    no: "05",
     title: "TaskFlow",
     category: "Personal project",
     description:
-      "A Kanban task-management app for teams — drag-and-drop boards, secure authentication and a clean, fast UI. Built end-to-end in TypeScript as a personal project.",
+      "A Kanban task-management app for teams — drag-and-drop boards, secure authentication and a clean, fast UI. Built end-to-end in TypeScript.",
     tech: ["React", "TypeScript", "Kanban", "Auth"],
-    impact: "Built after hours, shipped anyway.",
+    impact: "Built after hours, shipped anyway",
     link: { href: "https://cheery-kheer-d25b65.netlify.app/", label: "Visit site" },
-    tilt: "0.6deg",
+    accent: "#ffc531",
   },
 ];
 
 export default function Projects() {
   return (
-    <section id="projects" className="bg-ruled relative overflow-hidden px-4 py-20 lg:pl-24">
-      <div className="mx-auto max-w-5xl">
-        <Reveal className="text-center lg:text-left">
-          <p className="font-hand text-2xl text-pen">Shipped to production, used at scale —</p>
-          <h2 className="mt-1 inline-block text-4xl font-semibold tracking-tight sm:text-5xl">
-            Selected Projects
+    <section id="projects" className="relative px-4 py-24">
+      <div className="mx-auto max-w-6xl">
+        <Reveal className="text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue">
+            Selected work
+          </p>
+          <h2 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
+            Projects
           </h2>
-          <Squiggle className="mx-auto mt-1 block w-56 text-redpen/60 lg:mx-0" />
+          <p className="mx-auto mt-4 max-w-xl text-ink/65">
+            Five live platforms, shipped to production and used by real people.
+          </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-2">
+        <div className="mt-14 grid gap-7 md:grid-cols-2">
           {projects.map((p, i) => (
             <Reveal
-              key={p.no}
+              key={p.title}
               delay={(i % 2) * 120}
               className={
                 projects.length % 2 && i === projects.length - 1
-                  ? "md:col-span-2 md:w-full md:max-w-[calc(50%-1rem)] md:justify-self-center"
+                  ? "md:col-span-2 md:w-full md:max-w-[calc(50%-0.875rem)] md:justify-self-center"
                   : ""
               }
             >
-              <article
-                className="sheet relative flex h-full flex-col rounded-md p-6 sm:p-7"
-                style={{ transform: `rotate(${p.tilt})` }}
-              >
-                {p.stamp && (
-                  <span className="stamp absolute -top-4 right-5 text-xs">{p.stamp}</span>
-                )}
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-ink/10 bg-white p-7 shadow-[0_20px_50px_-30px_rgba(28,41,64,0.4)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_30px_60px_-30px_rgba(28,41,64,0.5)]">
+                <span className="absolute inset-x-0 top-0 h-1.5" style={{ backgroundColor: p.accent }} />
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-ink/45">
+                      {p.category}
+                    </p>
+                    <h3 className="mt-1.5 font-display text-2xl font-bold tracking-tight">
+                      {p.title}
+                    </h3>
+                  </div>
+                  {p.badge && (
+                    <span
+                      className="mt-1 shrink-0 rounded-full px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-white"
+                      style={{ backgroundColor: p.accent }}
+                    >
+                      ⚡ {p.badge}
+                    </span>
+                  )}
+                </div>
 
-                <p className="font-serif text-xs font-semibold uppercase tracking-[0.2em] text-ink/45">
-                  Project {p.no} · {p.category}
-                </p>
-                <h3 className="mt-2 text-2xl font-semibold tracking-tight">{p.title}</h3>
                 <p className="mt-3 grow text-sm leading-relaxed text-ink/70">{p.description}</p>
 
-                <div className="mt-4 flex flex-wrap gap-1.5">
+                <div className="mt-5 flex flex-wrap gap-1.5">
                   {p.tech.map((t) => (
-                    <span key={t} className="chip">
+                    <span
+                      key={t}
+                      className="rounded-full border border-ink/15 bg-cloud px-3 py-1 text-xs font-medium text-ink/75"
+                    >
                       {t}
                     </span>
                   ))}
                 </div>
 
-                {/* handwritten impact note */}
-                <div className="mt-5 flex items-end justify-between gap-4 border-t border-dashed border-ink/20 pt-4">
-                  <p className="font-hand text-lg leading-snug text-redpen">
-                    <Tick className="mr-1 inline-block w-5 align-[-2px] text-redpen" />
+                <div className="mt-5 flex items-center justify-between border-t border-ink/10 pt-4">
+                  <p className="text-sm font-semibold" style={{ color: p.accent }}>
                     {p.impact}
                   </p>
-                  {p.link && (
-                    <a
-                      href={p.link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="shrink-0 text-sm font-semibold text-pen underline decoration-pen/40 underline-offset-4 transition-colors hover:text-redpen hover:decoration-wavy"
-                    >
-                      {p.link.label} ↗
-                    </a>
-                  )}
+                  <a
+                    href={p.link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-semibold text-ink/70 transition-colors hover:text-blue"
+                  >
+                    {p.link.label} →
+                  </a>
                 </div>
               </article>
             </Reveal>

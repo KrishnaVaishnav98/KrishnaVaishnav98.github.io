@@ -1,75 +1,133 @@
 import Reveal from "./Reveal";
-import { Squiggle, Tick, Ruler } from "./doodles";
 
-const delivered = [
-  "Razorpay payments — order APIs, signature verification, failure handling",
-  "Full-stack wishlist feature: Django models → REST APIs → Next.js UI",
-  "Live bus tracking with maps and real-time location updates for parents",
-  "ERP modules for finance, transport & operations",
-  "Role-based dashboards with secure access control for four user roles",
-  "CMS-driven blogs and marketing pages for non-technical teams",
-  "Core Web Vitals & ISR — faster loads, better SEO rankings",
+const stops = [
+  {
+    when: "Dec 2023",
+    title: "Joined K12 Techno Services",
+    body: "Started on React.js/Next.js features for Orchids International and SchoolsUniverse.",
+    color: "#2f6bff",
+  },
+  {
+    when: "2024",
+    title: "Core Web Vitals overhaul",
+    body: "ISR and rendering optimisations across the platforms — faster loads, better SEO rankings.",
+    color: "#2ec99b",
+  },
+  {
+    when: "2024",
+    title: "ERP & role-based dashboards",
+    body: "Finance, transport and operations modules with secure access control for four user roles.",
+    color: "#ff7a59",
+  },
+  {
+    when: "2024",
+    title: "Live bus tracking",
+    body: "Real-time maps and location updates for parents and school administrators.",
+    color: "#ffc531",
+  },
+  {
+    when: "2025",
+    title: "Full-stack expansion",
+    body: "Took ownership end-to-end: Django REST Framework APIs and PostgreSQL schema design.",
+    color: "#a78bfa",
+  },
+  {
+    when: "2025",
+    title: "Payments in production",
+    body: "Razorpay integration — order APIs, signature verification and failure handling, end-to-end.",
+    color: "#2fc4b2",
+  },
+  {
+    when: "2026",
+    title: "Rapid builds",
+    body: "Science Explorer shipped in a single day; Arts At Orchids in a week — both live in production.",
+    color: "#e85d3d",
+  },
 ];
-
-const upNext = "System design at scale";
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative overflow-hidden px-4 py-20 lg:pl-24">
-      <Ruler className="right-[5%] top-16 hidden w-24 rotate-12 text-ink/15 animate-floaty lg:block" />
-
-      <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-        <div>
-          <Reveal className="text-center lg:text-left">
-            <p className="font-hand text-2xl text-pen">Two years at K12 Techno Services —</p>
-            <h2 className="mt-1 inline-block text-4xl font-semibold tracking-tight sm:text-5xl">
-              Experience
-            </h2>
-            <Squiggle className="mx-auto mt-1 block w-44 text-redpen/60 lg:mx-0" />
-          </Reveal>
-
-          <Reveal delay={150}>
-            <ul className="mt-9 space-y-4">
-              {delivered.map((item) => (
-                <li key={item} className="flex items-start gap-3.5">
-                  <span className="relative mt-0.5 h-5 w-5 shrink-0 rounded border-2 border-ink/35 bg-card">
-                    <Tick className="absolute -right-1.5 -top-2 w-6 rotate-3 text-redpen" />
-                  </span>
-                  <span className="leading-relaxed text-ink/80">{item}</span>
-                </li>
-              ))}
-              <li className="flex items-start gap-3.5">
-                <span className="mt-0.5 h-5 w-5 shrink-0 rounded border-2 border-dashed border-ink/30 bg-card" />
-                <span className="leading-relaxed text-ink/50">
-                  {upNext}{" "}
-                  <span className="font-hand text-lg text-pencil">
-                    — currently upskilling, notes in the margin
-                  </span>
-                </span>
-              </li>
-            </ul>
-          </Reveal>
-        </div>
-
-        {/* sticky note on backend growth */}
-        <Reveal delay={250} className="self-center">
-          <aside className="sticky-note mx-auto max-w-xs rotate-2 rounded-sm p-6 sm:p-7">
-            <p className="font-serif text-xs font-bold uppercase tracking-[0.2em] text-ink/55">
-              Growth Note
-            </p>
-            <p className="mt-3 font-hand text-xl leading-relaxed text-ink/85">
-              Expanded into <strong>Backend Development</strong> this year —
-              Django REST Framework, PostgreSQL schema design, payment APIs
-              with signature verification.
-            </p>
-            <p className="mt-3 font-hand text-xl leading-relaxed text-ink/85">
-              Frontend polish now comes with backend depth.
-            </p>
-            <p className="mt-4 text-right font-hand text-lg font-bold text-redpen">
-              — full-stack, officially ✓
-            </p>
-          </aside>
+    <section id="experience" className="relative overflow-hidden px-4 py-24">
+      <div className="mx-auto max-w-4xl">
+        <Reveal className="text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue">
+            Career
+          </p>
+          <h2 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
+            Experience
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-ink/65">
+            One company, two and a half years, an expanding scope — everything
+            below is running in production today.
+          </p>
         </Reveal>
+
+        <div className="relative mt-16">
+          {/* timeline spine */}
+          <div
+            className="absolute inset-y-0 left-6 w-1 -translate-x-1/2 rounded-full bg-gradient-to-b from-blue via-mint to-lilac opacity-25 sm:left-1/2"
+            aria-hidden
+          />
+
+          <ol className="space-y-12 pt-2">
+            {stops.map((s, i) => (
+              <li key={s.title} className="relative">
+                <span
+                  className="absolute left-6 top-1.5 z-10 flex h-5 w-5 -translate-x-1/2 items-center justify-center sm:left-1/2"
+                  aria-hidden
+                >
+                  <span
+                    className="stop-ping absolute inline-flex h-full w-full rounded-full"
+                    style={{ backgroundColor: s.color, animationDelay: `${i * 0.35}s` }}
+                  />
+                  <span
+                    className="relative inline-flex h-5 w-5 rounded-full border-4 border-white shadow"
+                    style={{ backgroundColor: s.color }}
+                  />
+                </span>
+
+                <Reveal
+                  delay={80}
+                  className={`ml-16 sm:ml-0 sm:w-[calc(50%-3rem)] ${
+                    i % 2 ? "sm:ml-[calc(50%+3rem)]" : "sm:mr-[calc(50%+3rem)] sm:text-right"
+                  }`}
+                >
+                  <div className="rounded-xl border border-ink/10 bg-white p-5 shadow-[0_16px_40px_-28px_rgba(28,41,64,0.5)] transition-transform duration-300 hover:-translate-y-1">
+                    <p className="text-xs font-bold uppercase tracking-wider" style={{ color: s.color }}>
+                      {s.when}
+                    </p>
+                    <h3 className="mt-1 font-display text-lg font-bold">{s.title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-ink/70">{s.body}</p>
+                  </div>
+                </Reveal>
+              </li>
+            ))}
+
+            {/* next stop */}
+            <li className="relative">
+              <span
+                className="absolute left-6 top-1.5 z-10 h-5 w-5 -translate-x-1/2 rounded-full border-4 border-dashed border-steel/60 bg-white sm:left-1/2"
+                aria-hidden
+              />
+              <Reveal
+                delay={80}
+                className="ml-16 sm:ml-0 sm:w-[calc(50%-3rem)] sm:mr-[calc(50%+3rem)] sm:text-right"
+              >
+                <div className="rounded-xl border-2 border-dashed border-ink/20 bg-cloud/60 p-5">
+                  <p className="text-xs font-bold uppercase tracking-wider text-steel">
+                    Next stop
+                  </p>
+                  <h3 className="mt-1 font-display text-lg font-bold text-ink/70">
+                    System design at scale
+                  </h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-ink/55">
+                    Currently upskilling — the route keeps extending.
+                  </p>
+                </div>
+              </Reveal>
+            </li>
+          </ol>
+        </div>
       </div>
     </section>
   );

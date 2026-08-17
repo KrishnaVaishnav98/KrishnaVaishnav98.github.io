@@ -1,28 +1,21 @@
 import type { Metadata } from "next";
-import { DM_Sans, Fraunces, Kalam } from "next/font/google";
+import { Bricolage_Grotesque, Outfit } from "next/font/google";
 import "./globals.css";
-import PageFrame from "@/components/PageFrame";
 
-const dmSans = DM_Sans({
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-bricolage",
 });
 
-const fraunces = Fraunces({
+const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-fraunces",
-});
-
-const kalam = Kalam({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-kalam",
+  variable: "--font-outfit",
 });
 
 export const metadata: Metadata = {
   title: "Krishna Vaishnav — Software Development Engineer",
   description:
-    "Full-stack engineer at K12 Techno Services, Bengaluru. I build the web platforms Indian schools run on — React/Next.js frontends backed by Django REST APIs.",
+    "Full-stack engineer at K12 Techno Services, Bengaluru. I build web platforms used at scale across India — React/Next.js frontends backed by Django REST APIs.",
 };
 
 export default function RootLayout({
@@ -33,12 +26,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} ${fraunces.variable} ${kalam.variable} antialiased`}
+      className={`${bricolage.variable} ${outfit.variable} antialiased`}
     >
-      <body>
-        <PageFrame />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

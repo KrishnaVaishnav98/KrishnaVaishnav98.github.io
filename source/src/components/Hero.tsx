@@ -1,93 +1,81 @@
 import Reveal from "./Reveal";
-import {
-  PaperPlane,
-  Pencil,
-  Paperclip,
-  StarSticker,
-  CircleScribble,
-  Squiggle,
-} from "./doodles";
+import { AtomIcon } from "./icons";
 
-const facts = [
-  { label: "Currently", value: "SDE 1 @ K12 Techno Services, Bengaluru" },
-  { label: "Experience", value: "Dec 2023 — present" },
-  { label: "Core stack", value: "React.js · Next.js · Django REST · PostgreSQL" },
+const roles = [
+  "React frontends",
+  "Django REST APIs",
+  "payment systems",
+  "education platforms",
 ];
 
 export default function Hero() {
   return (
-    <section id="top" className="bg-ruled relative overflow-hidden px-4 pb-20 pt-14 lg:pl-24">
-      <PaperPlane className="right-[6%] top-10 w-16 text-pen/40 animate-plane" />
-      <Pencil className="bottom-12 left-[3%] hidden w-20 text-ink/20 animate-floaty lg:block" />
-
-      <div className="mx-auto grid max-w-5xl items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+    <section id="top" className="relative overflow-hidden bg-gradient-to-b from-cloud to-white">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-16 lg:grid-cols-[1.15fr_0.85fr] lg:pt-20">
         {/* LEFT — intro */}
         <div className="text-center lg:text-left">
           <Reveal>
-            <p className="font-hand text-2xl text-pen sm:text-3xl">
-              Hello, I&apos;m —
+            <p className="inline-flex items-center gap-2 rounded-full border border-blue/20 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-blue shadow-sm">
+              <span className="relative flex h-2 w-2">
+                <span className="stop-ping absolute h-full w-full rounded-full bg-mint" />
+                <span className="relative h-2 w-2 rounded-full bg-mint" />
+              </span>
+              Open to opportunities
             </p>
           </Reveal>
 
-          <Reveal delay={100}>
-            <h1 className="mt-3 text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
-              Krishna{" "}
-              <span className="relative inline-block px-2">
-                Vaishnav
-                <CircleScribble className="text-redpen/70" />
-              </span>
+          <Reveal delay={120}>
+            <h1 className="mt-6 font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+              Krishna <span className="text-sheen">Vaishnav</span>
             </h1>
           </Reveal>
 
-          <Reveal delay={200}>
-            <p className="mx-auto mt-9 max-w-lg text-lg leading-relaxed text-ink/75 lg:mx-0">
+          <Reveal delay={240}>
+            <p className="mt-5 font-display text-xl font-semibold text-ink/80 sm:text-2xl">
               Software Development Engineer building{" "}
-              <strong className="mark-hi font-semibold text-ink">
-                web platforms used at scale across India
-              </strong>{" "}
-              — by students, parents and educators every single day. Frontend
-              at heart, full-stack in practice.
+              <span className="word-rotator text-blue">
+                <span>
+                  {[...roles, roles[0]].map((r, i) => (
+                    <span key={i} className="h-[1.35em]">
+                      {r}
+                    </span>
+                  ))}
+                </span>
+              </span>
             </p>
           </Reveal>
 
-          {/* quick facts */}
-          <Reveal delay={300}>
-            <dl className="mx-auto mt-8 max-w-lg space-y-4 lg:mx-0">
-              {facts.map((f) => (
-                <div key={f.label} className="text-sm sm:text-base lg:flex lg:items-baseline lg:gap-3">
-                  <dt className="mr-2 inline font-serif font-semibold text-ink/60 lg:mr-0 lg:block lg:shrink-0">
-                    {f.label}:
-                  </dt>
-                  <dd className="fill-line inline pb-0.5 font-hand text-lg text-pen sm:text-xl lg:block lg:grow">
-                    {f.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+          <Reveal delay={340}>
+            <p className="mx-auto mt-5 max-w-lg text-lg leading-relaxed text-ink/65 lg:mx-0">
+              Web platforms used at scale across India — by students, parents
+              and educators every single day. Frontend at heart, full-stack in
+              practice, at K12 Techno Services, Bengaluru.
+            </p>
           </Reveal>
 
-          <Reveal delay={400}>
-            <div className="mt-9 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
+          <Reveal delay={440}>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
               <a
                 href="#projects"
-                className="rounded-xl bg-ink px-6 py-3 text-sm font-semibold text-paper shadow-lg transition-transform hover:-translate-y-0.5"
+                className="rounded-full bg-blue px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-blue/30 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue/40"
               >
-                View my projects ↓
+                See my work ↓
               </a>
               <a
                 href="#contact"
-                className="font-hand text-xl font-bold text-redpen underline decoration-wavy underline-offset-4 transition-colors hover:text-pen"
+                className="rounded-full border-2 border-ink/15 bg-white px-7 py-3 text-sm font-semibold text-ink transition-all hover:-translate-y-0.5 hover:border-blue hover:text-blue"
               >
-                or get in touch
+                Get in touch
               </a>
             </div>
           </Reveal>
         </div>
 
-        {/* RIGHT — paper-clipped photo */}
+        {/* RIGHT — photo with floating badges */}
         <Reveal delay={250}>
           <div className="relative mx-auto w-64 sm:w-72">
-            <div className="rotate-2 rounded-sm border-[12px] border-b-[52px] border-white bg-white shadow-[0_24px_50px_-20px_rgba(35,44,67,0.5)]">
+            <div className="absolute -inset-3 rounded-[2.5rem] bg-gradient-to-br from-blue via-mint to-coral opacity-20 blur-xl" aria-hidden />
+            <div className="relative overflow-hidden rounded-[2rem] border-4 border-white shadow-[0_30px_60px_-25px_rgba(28,41,64,0.5)]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/krishna-profile.jpeg"
@@ -95,16 +83,42 @@ export default function Hero() {
                 className="aspect-[4/5] w-full object-cover"
               />
             </div>
-            <Paperclip className="-top-6 left-8 w-8 -rotate-12 text-pencil" />
-            <StarSticker className="-right-4 top-16 w-10 rotate-12 animate-floaty" />
-            <span className="absolute bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap font-hand text-xl text-ink/80 -rotate-1">
-              Based in Bengaluru, India
-            </span>
-            <div className="absolute -bottom-9 left-1/2 w-40 -translate-x-1/2">
-              <Squiggle className="w-full text-redpen/50" />
+
+            <div
+              className="float-badge absolute -left-8 top-8 rounded-2xl bg-[#0e2a3a] p-2.5 shadow-lg"
+              style={{ "--fd": "0s", "--tilt": "-8deg" } as React.CSSProperties}
+            >
+              <AtomIcon className="h-8 w-8" />
+            </div>
+            <div
+              className="float-badge absolute -right-7 top-24 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#f7df1e] font-display text-sm font-bold text-[#222] shadow-lg"
+              style={{ "--fd": "1.2s", "--tilt": "7deg" } as React.CSSProperties}
+            >
+              JS
+            </div>
+            <div
+              className="float-badge absolute -left-6 bottom-20 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#092e20] font-display text-sm font-bold text-white shadow-lg"
+              style={{ "--fd": "2.1s", "--tilt": "6deg" } as React.CSSProperties}
+            >
+              dj
+            </div>
+            <div
+              className="float-badge absolute -bottom-4 right-10 flex h-11 w-11 items-center justify-center rounded-2xl bg-ink font-display text-lg font-bold text-white shadow-lg"
+              style={{ "--fd": "0.6s", "--tilt": "-6deg" } as React.CSSProperties}
+            >
+              N
             </div>
           </div>
         </Reveal>
+      </div>
+
+      {/* scroll cue */}
+      <div className="flex justify-center pb-8">
+        <a href="#skills" className="scroll-cue text-ink/40" aria-label="Scroll down">
+          <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </a>
       </div>
     </section>
   );

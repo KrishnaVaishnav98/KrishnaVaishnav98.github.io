@@ -1,45 +1,40 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-fraunces), Georgia, serif;
-  --font-hand: var(--font-kalam), cursive;
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
 
-  --color-paper: #faf6ec;
-  --color-card: #fffdf6;
-  --color-ink: #232c43;
-  --color-pen: #2b4bb5;
-  --color-redpen: #d0453a;
-  --color-gold: #f0b429;
-  --color-pencil: #8b8fa3;
+  --color-cloud: #f5faff;
+  --color-ink: #1c2940;
+  --color-blue: #2f6bff;
+  --color-coral: #ff7a59;
+  --color-mint: #2ec99b;
+  --color-sun: #ffc531;
+  --color-lilac: #a78bfa;
+  --color-steel: #64748b;
 }
 
 body {
-  background: var(--color-paper);
+  background: #ffffff;
   color: var(--color-ink);
   font-family: var(--font-sans);
   overflow-x: hidden;
 }
 
 h1, h2, h3 {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
 }
 
 section[id] {
-  scroll-margin-top: 4.5rem;
+  scroll-margin-top: 5rem;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-.font-hand {
-  font-family: var(--font-hand);
-}
-
-/* Highlighter selection */
 ::selection {
-  background: #ffe066;
+  background: var(--color-sun);
   color: var(--color-ink);
 }
 
@@ -47,110 +42,17 @@ html {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f2edde;
+  background: var(--color-cloud);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-redpen);
+  background: var(--color-blue);
   border-radius: 3px;
 }
 
-/* Ruled notebook lines */
-.bg-ruled {
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 0 31px,
-    rgba(43, 75, 181, 0.11) 31px 32px
-  );
-}
-
-/* Yellow highlighter stroke behind key words */
-.mark-hi {
-  background-image: linear-gradient(
-    transparent 55%,
-    rgba(255, 224, 102, 0.85) 55%,
-    rgba(255, 224, 102, 0.85) 94%,
-    transparent 94%
-  );
-  padding: 0 0.12em;
-}
-
-/* Dotted fill-in-the-blank line */
-.fill-line {
-  border-bottom: 2px dotted rgba(43, 75, 181, 0.4);
-}
-
-/* Red-ink rubber stamp */
-.stamp {
-  display: inline-block;
-  font-family: var(--font-serif);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--color-redpen);
-  border: 3px double currentColor;
-  border-radius: 10px;
-  padding: 0.25em 0.7em;
-  transform: rotate(-6deg);
-  mix-blend-mode: multiply;
-  opacity: 0.9;
-}
-
-/* Post-it sticky note with folded corner */
-.sticky-note {
-  position: relative;
-  background: linear-gradient(180deg, #fff9bc 0%, #fff085 100%);
-  box-shadow: 0 14px 28px -14px rgba(35, 44, 67, 0.4);
-}
-.sticky-note::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 0 26px 26px;
-  border-color: transparent transparent rgba(35, 44, 67, 0.1) transparent;
-}
-
-/* Assignment sheet card */
-.sheet {
-  background: var(--color-card);
-  border: 1px solid rgba(35, 44, 67, 0.12);
-  box-shadow: 0 18px 40px -22px rgba(35, 44, 67, 0.35);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-.sheet:hover {
-  transform: translateY(-4px) rotate(0deg) !important;
-  box-shadow: 0 26px 50px -22px rgba(35, 44, 67, 0.45);
-}
-
-/* Pencil-outline chip */
-.chip {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--color-ink);
-  border: 1.5px solid rgba(35, 44, 67, 0.28);
-  border-radius: 999px;
-  padding: 0.2em 0.75em;
-  background: rgba(255, 255, 255, 0.6);
-}
-
-/* Hole-punch dot (left page rail) */
-.punch-hole {
-  width: 15px;
-  height: 15px;
-  border-radius: 999px;
-  background: #ece5d3;
-  box-shadow: inset 0 2px 4px rgba(35, 44, 67, 0.25);
-}
-
-/* Scroll reveal — .is-in added by the Reveal component */
+/* ---------- scroll reveal ---------- */
 .reveal {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(24px);
   transition: opacity 0.7s ease, transform 0.7s ease;
   transition-delay: var(--reveal-delay, 0ms);
   will-change: opacity, transform;
@@ -160,33 +62,119 @@ html {
   transform: none;
 }
 
-/* Gentle bobbing for margin doodles */
-@keyframes floaty {
-  0%, 100% { transform: rotate(var(--tilt, 0deg)) translateY(0); }
-  50% { transform: rotate(var(--tilt, 0deg)) translateY(-8px); }
+/* ---------- animated headline gradient ---------- */
+.text-sheen {
+  background: linear-gradient(90deg, #1c2940, #2f6bff 30%, #ff7a59 60%, #1c2940 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: sheen-pan 8s linear infinite;
 }
-.animate-floaty {
-  animation: floaty 5.5s ease-in-out infinite;
+@keyframes sheen-pan {
+  from { background-position: 0% 0; }
+  to   { background-position: 200% 0; }
 }
 
-/* Paper plane drifting across the hero */
-@keyframes plane-drift {
-  0%   { transform: translate(0, 0) rotate(8deg); }
-  50%  { transform: translate(18px, -14px) rotate(2deg); }
-  100% { transform: translate(0, 0) rotate(8deg); }
+/* ---------- rotating role words ---------- */
+.word-rotator {
+  display: inline-flex;
+  height: 1.35em;
+  overflow: hidden;
+  vertical-align: bottom;
 }
-.animate-plane {
-  animation: plane-drift 7s ease-in-out infinite;
+.word-rotator > span {
+  display: flex;
+  flex-direction: column;
+  animation: word-cycle 9s cubic-bezier(0.7, 0, 0.2, 1) infinite;
+}
+@keyframes word-cycle {
+  0%, 20%   { transform: translateY(0); }
+  25%, 45%  { transform: translateY(-1.35em); }
+  50%, 70%  { transform: translateY(-2.7em); }
+  75%, 95%  { transform: translateY(-4.05em); }
+  100%      { transform: translateY(-5.4em); }
+}
+
+/* ---------- tech tiles ---------- */
+.tile {
+  opacity: 0;
+  transform: scale(0.3) translateY(20px);
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: var(--d, 0ms);
+}
+.is-in .tile {
+  opacity: 1;
+  transform: none;
+}
+
+/* periodic hop wave travelling across the row */
+.tile-hop {
+  animation: tile-hop 5.5s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.18s + 2s);
+}
+@keyframes tile-hop {
+  0%, 14%, 100% { transform: translateY(0) scale(1, 1); }
+  4%  { transform: translateY(-16px) scale(0.96, 1.06); }
+  9%  { transform: translateY(0) scale(1.06, 0.92); }
+  12% { transform: translateY(-5px) scale(1, 1); }
+}
+.tile-hop:hover {
+  animation-play-state: paused;
+}
+
+.tile-btn {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+.tile-btn:hover {
+  transform: translateY(-10px) rotate(-5deg) scale(1.12);
+  box-shadow: 0 22px 35px -18px rgba(28, 41, 64, 0.55);
+}
+
+.spin-slow {
+  animation: spin-slow 14s linear infinite;
+  transform-origin: center;
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- floating hero badges ---------- */
+.float-badge {
+  animation: float-badge 5s ease-in-out infinite;
+  animation-delay: var(--fd, 0s);
+}
+@keyframes float-badge {
+  0%, 100% { transform: translateY(0) rotate(var(--tilt, 0deg)); }
+  50% { transform: translateY(-12px) rotate(var(--tilt, 0deg)); }
+}
+
+/* ---------- scroll cue ---------- */
+.scroll-cue {
+  animation: scroll-cue 2s ease-in-out infinite;
+}
+@keyframes scroll-cue {
+  0%, 100% { transform: translateY(0); opacity: 0.7; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+
+/* ---------- timeline dots ---------- */
+.stop-ping {
+  animation: stop-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes stop-ping {
+  0%   { transform: scale(1); opacity: 0.6; }
+  70%, 100% { transform: scale(2.1); opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  .reveal, .tile {
     opacity: 1;
     transform: none;
     transition: none;
   }
-  .animate-floaty,
-  .animate-plane {
+  .text-sheen, .word-rotator > span, .tile-hop, .spin-slow,
+  .float-badge, .scroll-cue, .stop-ping {
     animation: none;
   }
 }
