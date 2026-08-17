@@ -1,134 +1,112 @@
-"use client";
+import Reveal from "./Reveal";
+import { Squiggle, StarSticker } from "./doodles";
 
-import { motion } from "framer-motion";
-import SectionNumber from "./SectionNumber";
-
-interface SkillCategory {
-  title: string;
-  subtitle?: string;
-  items: string[];
-  color: string;
-}
-
-const categories: SkillCategory[] = [
+const skills = [
   {
-    title: "Frontend",
-    subtitle: "What I do every day",
-    items: ["React.js", "Next.js", "Redux", "HTML5", "CSS3", "JavaScript (ES6+)", "Tailwind CSS", "Bootstrap", "Ant Design", "React Router"],
-    color: "#60a5fa",
+    name: "React.js & Next.js",
+    level: "Expert",
+    note: "SSR, ISR and Core Web Vitals — my home turf.",
   },
   {
-    title: "Backend",
-    subtitle: "Learning & building small projects",
-    items: ["Node.js", "Express.js", "MongoDB"],
-    color: "#34d399",
+    name: "JavaScript / ES6+",
+    level: "Advanced",
+    note: "Clean, readable code. Rarely any red marks in the console.",
   },
   {
-    title: "Tools & Platforms",
-    subtitle: "Daily workflow",
-    items: ["GitHub", "GitLab", "GitHub Desktop", "Postman", "Vercel", "Netlify", "VS Code"],
-    color: "#a78bfa",
+    name: "CSS & Tailwind",
+    level: "Advanced",
+    note: "Pixel-perfect layouts. Margins always aligned.",
+  },
+  {
+    name: "Redux & State Management",
+    level: "Advanced",
+    note: "Keeps complex app state firmly under control.",
+  },
+  {
+    name: "Python, Django & DRF",
+    level: "Proficient",
+    note: "Newest addition to the stack — already shipping production APIs.",
+    fresh: true,
+  },
+  {
+    name: "PostgreSQL & MongoDB",
+    level: "Proficient",
+    note: "Schema design, migrations and query tuning.",
+  },
+  {
+    name: "Git, Postman & Tooling",
+    level: "Advanced",
+    note: "Disciplined commits, thorough API testing.",
   },
 ];
 
-const exploring = ["Next.js App Router", "ISR & Caching", "TypeScript", "Backend Fundamentals"];
-
 export default function Skills() {
   return (
-    <section className="relative min-h-screen overflow-hidden">
-      <SectionNumber number="03" label="Skills" />
-
-      <div className="min-h-screen px-6 md:px-12 lg:px-16 pt-28 md:pt-32 pb-16">
-        {/* Header */}
-        <div className="mb-10 md:mb-14 max-w-3xl">
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-2">
-            What I work
+    <section id="skills" className="relative px-4 py-20 lg:pl-24">
+      <div className="mx-auto max-w-4xl">
+        <Reveal className="text-center lg:text-left">
+          <p className="font-hand text-2xl text-pen">An honest self-assessment —</p>
+          <h2 className="mt-1 inline-block text-4xl font-semibold tracking-tight sm:text-5xl">
+            Skills
           </h2>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-light text-muted tracking-tight">
-            <span className="font-serif italic">with.</span>
-          </h2>
-        </div>
+          <Squiggle className="mx-auto mt-1 block w-40 text-redpen/60 lg:mx-0" />
+        </Reveal>
 
-        {/* Categories */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-          {categories.map((cat, ci) => (
-            <motion.div
-              key={cat.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: ci * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="rounded-2xl bg-card/40 border border-border p-6 backdrop-blur-sm"
-              style={{ borderTopColor: cat.color, borderTopWidth: "2px" }}
-            >
-              {/* Category header */}
-              <div className="flex items-baseline justify-between mb-1">
-                <h3 className="text-lg md:text-xl font-bold tracking-tight">
-                  {cat.title}
-                </h3>
-                <span className="text-[10px] font-mono" style={{ color: cat.color }}>
-                  {String(cat.items.length).padStart(2, "0")}
-                </span>
-              </div>
-              {cat.subtitle && (
-                <p className="text-[11px] text-muted-foreground italic mb-5">
-                  {cat.subtitle}
-                </p>
-              )}
+        <Reveal delay={150}>
+          <div className="relative mt-10 rounded-lg border-4 border-double border-ink/25 bg-card p-6 shadow-[0_24px_60px_-28px_rgba(35,44,67,0.45)] sm:p-10">
+            <StarSticker className="-right-3 -top-3 w-11 rotate-12" />
 
-              {/* Items as chips */}
-              <div className="flex flex-wrap gap-1.5">
-                {cat.items.map((item, i) => (
-                  <motion.span
-                    key={item}
-                    initial={{ opacity: 0, scale: 0.85 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: ci * 0.1 + i * 0.03 }}
-                    className="text-[11px] px-2.5 py-1 rounded-full bg-surface border border-border text-foreground hover:border-accent/30 transition-colors"
-                  >
-                    {item}
-                  </motion.span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Currently exploring */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="rounded-2xl bg-accent/5 border border-accent/20 p-5 md:p-6"
-        >
-          <div className="flex flex-col md:flex-row md:items-center gap-4">
-            <div className="flex items-center gap-3">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
-              </span>
-              <p className="text-[10px] text-accent uppercase tracking-widest font-semibold whitespace-nowrap">
-                Currently Exploring
+            {/* header row like an official document */}
+            <div className="flex flex-wrap items-baseline justify-center gap-2 border-b-2 border-ink/15 pb-4 text-center sm:justify-between sm:text-left">
+              <p className="font-serif text-sm font-semibold uppercase tracking-[0.18em] text-ink/60">
+                Skill Matrix · Full-Stack Development
+              </p>
+              <p className="font-hand text-lg text-pen">
+                Krishna Vaishnav
               </p>
             </div>
-            <div className="flex flex-wrap gap-1.5">
-              {exploring.map((item) => (
-                <span
-                  key={item}
-                  className="text-[11px] px-2.5 py-1 rounded-full bg-card border border-accent/20 text-foreground"
+
+            <ul className="divide-y divide-dashed divide-ink/15">
+              {skills.map((s, i) => (
+                <li
+                  key={s.name}
+                  className="grid grid-cols-[1fr_auto] items-center gap-x-4 gap-y-1 py-4 sm:grid-cols-[220px_1fr_auto]"
                 >
-                  {item}
-                </span>
+                  <span className="font-semibold text-ink">
+                    {s.name}
+                    {s.fresh && (
+                      <span className="ml-2 align-middle font-hand text-sm font-bold text-redpen">
+                        new this year!
+                      </span>
+                    )}
+                  </span>
+                  <span className="col-span-2 text-sm leading-relaxed text-ink/65 sm:col-span-1 sm:col-start-2 sm:row-start-1">
+                    <span className="font-hand text-base text-pen">“{s.note}”</span>
+                  </span>
+                  <span
+                    className="relative row-start-1 justify-self-end font-hand text-xl font-bold text-redpen sm:col-start-3"
+                    style={{ transform: `rotate(${i % 2 ? 2 : -2}deg)` }}
+                  >
+                    {s.level}
+                  </span>
+                </li>
               ))}
+            </ul>
+
+            <div className="mt-6 flex flex-wrap items-end justify-between gap-6 border-t-2 border-ink/15 pt-6">
+              <div>
+                <p className="fill-line inline-block pb-1 font-hand text-xl text-ink/70">
+                  Reviewed by: Production, esq.
+                </p>
+                <p className="mt-1 text-xs text-ink/50">
+                  (strictest reviewer I know — everything above ships to real users)
+                </p>
+              </div>
+              <span className="stamp text-sm">Production-Tested</span>
             </div>
           </div>
-        </motion.div>
+        </Reveal>
       </div>
-
-      {/* Decorative grid */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)] bg-[size:80px_80px]" />
     </section>
   );
 }

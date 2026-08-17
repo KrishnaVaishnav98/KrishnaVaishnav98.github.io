@@ -1,24 +1,28 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Sans, Fraunces, Kalam } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import CommandPalette from "@/components/CommandPalette";
-import CustomCursor from "@/components/CustomCursor";
+import PageFrame from "@/components/PageFrame";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const dmSans = DM_Sans({
   subsets: ["latin"],
+  variable: "--font-dm-sans",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const fraunces = Fraunces({
   subsets: ["latin"],
+  variable: "--font-fraunces",
+});
+
+const kalam = Kalam({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-kalam",
 });
 
 export const metadata: Metadata = {
-  title: "Krishna Vaishnav — Frontend Developer",
+  title: "Krishna Vaishnav — Software Development Engineer",
   description:
-    "SDE at K12 Techno Services, Bengaluru. Building education platforms used by thousands of students across India.",
+    "Full-stack engineer at K12 Techno Services, Bengaluru. I build the web platforms Indian schools run on — React/Next.js frontends backed by Django REST APIs.",
 };
 
 export default function RootLayout({
@@ -29,18 +33,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${dmSans.variable} ${fraunces.variable} ${kalam.variable} antialiased`}
     >
-      <body className="min-h-full overflow-hidden">
-        <div className="mesh-gradient">
-          <div className="orb" />
-          <div className="orb" />
-          <div className="orb" />
-        </div>
-
-        <CustomCursor />
-        <Navbar />
-        <CommandPalette />
+      <body>
+        <PageFrame />
         {children}
       </body>
     </html>

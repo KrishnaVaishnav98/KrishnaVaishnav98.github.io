@@ -2,7 +2,7 @@
 
 Live: [krishnavaishnav98.github.io](https://krishnavaishnav98.github.io/)
 
-Built in Public — Krishna v1 → v5. A terminal/developer-OS themed portfolio where the portfolio itself is a project.
+A light, paper-notebook themed portfolio — ruled paper with a red margin, handwritten ink accents, a paper-clipped photo, a skill matrix stamped "Production-Tested", project cards with handwritten impact notes, and a sticky note on backend growth.
 
 ## Repo structure
 
@@ -31,8 +31,8 @@ GitHub Pages serves the static files from the repo root. The `source/` folder co
 - **Next.js 16** (App Router) — static export mode
 - **TypeScript**
 - **Tailwind CSS v4**
-- **Framer Motion** — animations
 - **React 19**
+- Fonts: Fraunces (headings) · DM Sans (body) · Kalam (handwriting)
 
 ## Local development
 

@@ -1,154 +1,192 @@
 @import "tailwindcss";
 
-:root {
-  --background: #000000;
-  --foreground: #f5f5f7;
-  --accent: #0a84ff;
-  --accent-hover: #409cff;
-  --muted: #86868b;
-  --muted-foreground: #48484a;
-  --card: rgba(28, 28, 30, 0.6);
-  --card-hover: rgba(44, 44, 46, 0.6);
-  --border: rgba(255, 255, 255, 0.08);
-  --surface: #0d0d0d;
-  --success: #30d158;
-  --destructive: #ff453a;
-  --cursor-size: 12px;
-}
-
-html.light {
-  --background: #ffffff;
-  --foreground: #1d1d1f;
-  --accent: #0066cc;
-  --accent-hover: #0071e3;
-  --muted: #86868b;
-  --muted-foreground: #aeaeb2;
-  --card: rgba(242, 242, 247, 0.6);
-  --card-hover: rgba(229, 229, 234, 0.6);
-  --border: rgba(0, 0, 0, 0.06);
-  --surface: #f5f5f7;
-  --success: #248a3d;
-  --destructive: #d70015;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
-  --color-accent-hover: var(--accent-hover);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-card: var(--card);
-  --color-card-hover: var(--card-hover);
-  --color-border: var(--border);
-  --color-surface: var(--surface);
-  --color-success: var(--success);
-  --color-destructive: var(--destructive);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, serif;
+  --font-hand: var(--font-kalam), cursive;
+
+  --color-paper: #faf6ec;
+  --color-card: #fffdf6;
+  --color-ink: #232c43;
+  --color-pen: #2b4bb5;
+  --color-redpen: #d0453a;
+  --color-gold: #f0b429;
+  --color-pencil: #8b8fa3;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  cursor: none;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
   overflow-x: hidden;
-  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-a, button { cursor: none; }
+h1, h2, h3 {
+  font-family: var(--font-serif);
+}
 
-html { scroll-behavior: auto; }
+section[id] {
+  scroll-margin-top: 4.5rem;
+}
 
+html {
+  scroll-behavior: smooth;
+}
+
+.font-hand {
+  font-family: var(--font-hand);
+}
+
+/* Highlighter selection */
 ::selection {
-  background: var(--accent);
-  color: #fff;
+  background: #ffe066;
+  color: var(--color-ink);
 }
 
-::-webkit-scrollbar { width: 0; }
-
-/* ---- Gradient text ---- */
-.text-gradient {
-  background: linear-gradient(to right, var(--foreground), var(--muted));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f2edde;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-redpen);
+  border-radius: 3px;
 }
 
-.text-accent-gradient {
-  background: linear-gradient(135deg, #0a84ff 0%, #5ac8fa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-html.light .text-accent-gradient {
-  background: linear-gradient(135deg, #0066cc 0%, #32ade6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Ruled notebook lines */
+.bg-ruled {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0 31px,
+    rgba(43, 75, 181, 0.11) 31px 32px
+  );
 }
 
-/* ---- Glass ---- */
-.glass {
-  backdrop-filter: blur(40px) saturate(180%);
-  -webkit-backdrop-filter: blur(40px) saturate(180%);
-  background: rgba(0, 0, 0, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-html.light .glass {
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-/* ---- Animated mesh gradient bg ---- */
-@keyframes mesh-shift {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  25% { transform: translate(30px, -50px) scale(1.1); }
-  50% { transform: translate(-20px, 20px) scale(0.95); }
-  75% { transform: translate(50px, 30px) scale(1.05); }
+/* Yellow highlighter stroke behind key words */
+.mark-hi {
+  background-image: linear-gradient(
+    transparent 55%,
+    rgba(255, 224, 102, 0.85) 55%,
+    rgba(255, 224, 102, 0.85) 94%,
+    transparent 94%
+  );
+  padding: 0 0.12em;
 }
 
-.mesh-gradient {
-  position: fixed;
-  top: -20%;
-  left: -20%;
-  width: 140%;
-  height: 140%;
-  pointer-events: none;
-  z-index: 0;
+/* Dotted fill-in-the-blank line */
+.fill-line {
+  border-bottom: 2px dotted rgba(43, 75, 181, 0.4);
 }
-.mesh-gradient .orb {
+
+/* Red-ink rubber stamp */
+.stamp {
+  display: inline-block;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-redpen);
+  border: 3px double currentColor;
+  border-radius: 10px;
+  padding: 0.25em 0.7em;
+  transform: rotate(-6deg);
+  mix-blend-mode: multiply;
+  opacity: 0.9;
+}
+
+/* Post-it sticky note with folded corner */
+.sticky-note {
+  position: relative;
+  background: linear-gradient(180deg, #fff9bc 0%, #fff085 100%);
+  box-shadow: 0 14px 28px -14px rgba(35, 44, 67, 0.4);
+}
+.sticky-note::after {
+  content: "";
   position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.07;
-  animation: mesh-shift 20s ease-in-out infinite;
-}
-.mesh-gradient .orb:nth-child(1) {
-  width: 600px; height: 600px;
-  background: #0a84ff;
-  top: 10%; left: 20%;
-  animation-delay: 0s;
-}
-.mesh-gradient .orb:nth-child(2) {
-  width: 500px; height: 500px;
-  background: #5ac8fa;
-  top: 50%; right: 10%;
-  animation-delay: -7s;
-}
-.mesh-gradient .orb:nth-child(3) {
-  width: 400px; height: 400px;
-  background: #bf5af2;
-  bottom: 10%; left: 40%;
-  animation-delay: -14s;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 26px 26px;
+  border-color: transparent transparent rgba(35, 44, 67, 0.1) transparent;
 }
 
-html.light .mesh-gradient .orb { opacity: 0.04; }
+/* Assignment sheet card */
+.sheet {
+  background: var(--color-card);
+  border: 1px solid rgba(35, 44, 67, 0.12);
+  box-shadow: 0 18px 40px -22px rgba(35, 44, 67, 0.35);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.sheet:hover {
+  transform: translateY(-4px) rotate(0deg) !important;
+  box-shadow: 0 26px 50px -22px rgba(35, 44, 67, 0.45);
+}
 
-/* Mobile cursor restore */
-@media (hover: none) {
-  body, a, button { cursor: auto; }
+/* Pencil-outline chip */
+.chip {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-ink);
+  border: 1.5px solid rgba(35, 44, 67, 0.28);
+  border-radius: 999px;
+  padding: 0.2em 0.75em;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* Hole-punch dot (left page rail) */
+.punch-hole {
+  width: 15px;
+  height: 15px;
+  border-radius: 999px;
+  background: #ece5d3;
+  box-shadow: inset 0 2px 4px rgba(35, 44, 67, 0.25);
+}
+
+/* Scroll reveal — .is-in added by the Reveal component */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Gentle bobbing for margin doodles */
+@keyframes floaty {
+  0%, 100% { transform: rotate(var(--tilt, 0deg)) translateY(0); }
+  50% { transform: rotate(var(--tilt, 0deg)) translateY(-8px); }
+}
+.animate-floaty {
+  animation: floaty 5.5s ease-in-out infinite;
+}
+
+/* Paper plane drifting across the hero */
+@keyframes plane-drift {
+  0%   { transform: translate(0, 0) rotate(8deg); }
+  50%  { transform: translate(18px, -14px) rotate(2deg); }
+  100% { transform: translate(0, 0) rotate(8deg); }
+}
+.animate-plane {
+  animation: plane-drift 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-floaty,
+  .animate-plane {
+    animation: none;
+  }
 }
