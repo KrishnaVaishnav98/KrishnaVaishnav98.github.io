@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-ink text-white">
+    <footer className="border-t border-ink/10 bg-[#070d18] text-white">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-2 px-4 py-12 text-center">
         <p className="font-display text-lg font-bold">Krishna Vaishnav</p>
         <p className="text-sm text-white/60">

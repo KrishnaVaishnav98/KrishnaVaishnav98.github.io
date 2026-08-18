@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import PopDot from "./PopDot";
 
 const stops = [
   {
@@ -50,16 +51,18 @@ export default function Experience() {
     <section id="experience" className="relative overflow-hidden px-4 py-24">
       <div className="mx-auto max-w-4xl">
         <Reveal className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue">
-            Career
-          </p>
-          <h2 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
-            Experience
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-ink/65">
-            One company, two and a half years, an expanding scope — everything
-            below is running in production today.
-          </p>
+          <div className="torch-card">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue">
+              Career
+            </p>
+            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
+              Experience
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-ink/65">
+              One company, two and a half years, an expanding scope — everything
+              below is running in production today.
+            </p>
+          </div>
         </Reveal>
 
         <div className="relative mt-16">
@@ -72,19 +75,7 @@ export default function Experience() {
           <ol className="space-y-12 pt-2">
             {stops.map((s, i) => (
               <li key={s.title} className="relative">
-                <span
-                  className="absolute left-6 top-1.5 z-10 flex h-5 w-5 -translate-x-1/2 items-center justify-center sm:left-1/2"
-                  aria-hidden
-                >
-                  <span
-                    className="stop-ping absolute inline-flex h-full w-full rounded-full"
-                    style={{ backgroundColor: s.color, animationDelay: `${i * 0.35}s` }}
-                  />
-                  <span
-                    className="relative inline-flex h-5 w-5 rounded-full border-4 border-white shadow"
-                    style={{ backgroundColor: s.color }}
-                  />
-                </span>
+                <PopDot color={s.color} />
 
                 <Reveal
                   delay={80}
@@ -92,7 +83,7 @@ export default function Experience() {
                     i % 2 ? "sm:ml-[calc(50%+3rem)]" : "sm:mr-[calc(50%+3rem)] sm:text-right"
                   }`}
                 >
-                  <div className="rounded-xl border border-ink/10 bg-white p-5 shadow-[0_16px_40px_-28px_rgba(28,41,64,0.5)] transition-transform duration-300 hover:-translate-y-1">
+                  <div className="torch-card rounded-xl border border-ink/10 bg-card p-5 shadow-[0_16px_40px_-28px_rgba(0,0,0,0.8)] transition-transform duration-300 hover:-translate-y-1">
                     <p className="text-xs font-bold uppercase tracking-wider" style={{ color: s.color }}>
                       {s.when}
                     </p>
@@ -105,15 +96,12 @@ export default function Experience() {
 
             {/* next stop */}
             <li className="relative">
-              <span
-                className="absolute left-6 top-1.5 z-10 h-5 w-5 -translate-x-1/2 rounded-full border-4 border-dashed border-steel/60 bg-white sm:left-1/2"
-                aria-hidden
-              />
+              <PopDot dashed />
               <Reveal
                 delay={80}
                 className="ml-16 sm:ml-0 sm:w-[calc(50%-3rem)] sm:mr-[calc(50%+3rem)] sm:text-right"
               >
-                <div className="rounded-xl border-2 border-dashed border-ink/20 bg-cloud/60 p-5">
+                <div className="torch-card rounded-xl border-2 border-dashed border-ink/20 bg-cloud/60 p-5">
                   <p className="text-xs font-bold uppercase tracking-wider text-steel">
                     Next stop
                   </p>

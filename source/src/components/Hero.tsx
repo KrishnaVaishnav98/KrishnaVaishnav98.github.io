@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import TiltCard from "./TiltCard";
 import { AtomIcon } from "./icons";
 
 const roles = [
@@ -10,12 +11,12 @@ const roles = [
 
 export default function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-gradient-to-b from-cloud to-white">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-16 lg:grid-cols-[1.15fr_0.85fr] lg:pt-20">
+    <section id="top" className="relative overflow-hidden bg-gradient-to-b from-[#121d33] to-night">
+      <div className="torch-card mx-auto grid max-w-6xl items-center gap-12 px-4 pb-16 pt-16 lg:grid-cols-[1.15fr_0.85fr] lg:pt-20">
         {/* LEFT — intro */}
         <div className="text-center lg:text-left">
           <Reveal>
-            <p className="inline-flex items-center gap-2 rounded-full border border-blue/20 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-blue shadow-sm">
+            <p className="inline-flex items-center gap-2 rounded-full border border-blue/25 bg-card/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-blue shadow-sm">
               <span className="relative flex h-2 w-2">
                 <span className="stop-ping absolute h-full w-full rounded-full bg-mint" />
                 <span className="relative h-2 w-2 rounded-full bg-mint" />
@@ -63,7 +64,7 @@ export default function Hero() {
               </a>
               <a
                 href="#contact"
-                className="rounded-full border-2 border-ink/15 bg-white px-7 py-3 text-sm font-semibold text-ink transition-all hover:-translate-y-0.5 hover:border-blue hover:text-blue"
+                className="rounded-full border-2 border-ink/15 bg-card px-7 py-3 text-sm font-semibold text-ink transition-all hover:-translate-y-0.5 hover:border-blue hover:text-blue"
               >
                 Get in touch
               </a>
@@ -74,36 +75,42 @@ export default function Hero() {
         {/* RIGHT — photo with floating badges */}
         <Reveal delay={250}>
           <div className="relative mx-auto w-64 sm:w-72">
-            <div className="absolute -inset-3 rounded-[2.5rem] bg-gradient-to-br from-blue via-mint to-coral opacity-20 blur-xl" aria-hidden />
-            <div className="relative overflow-hidden rounded-[2rem] border-4 border-white shadow-[0_30px_60px_-25px_rgba(28,41,64,0.5)]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/krishna-profile.jpeg"
-                alt="Krishna Vaishnav"
-                className="aspect-[4/5] w-full object-cover"
-              />
-            </div>
+            <div className="absolute -inset-3 rounded-[2.5rem] bg-gradient-to-br from-blue via-mint to-coral opacity-25 blur-xl" aria-hidden />
+            <TiltCard max={10} className="rounded-[2rem]">
+              <div className="relative overflow-hidden rounded-[2rem] border-4 border-white/15 shadow-[0_30px_60px_-25px_rgba(0,0,0,0.8)]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/krishna-profile.jpeg"
+                  alt="Krishna Vaishnav"
+                  className="aspect-[4/5] w-full object-cover"
+                />
+              </div>
+            </TiltCard>
 
             <div
+              data-fly-src="react"
               className="float-badge absolute -left-8 top-8 rounded-2xl bg-[#0e2a3a] p-2.5 shadow-lg"
               style={{ "--fd": "0s", "--tilt": "-8deg" } as React.CSSProperties}
             >
               <AtomIcon className="h-8 w-8" />
             </div>
             <div
+              data-fly-src="js"
               className="float-badge absolute -right-7 top-24 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#f7df1e] font-display text-sm font-bold text-[#222] shadow-lg"
               style={{ "--fd": "1.2s", "--tilt": "7deg" } as React.CSSProperties}
             >
               JS
             </div>
             <div
+              data-fly-src="django"
               className="float-badge absolute -left-6 bottom-20 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#092e20] font-display text-sm font-bold text-white shadow-lg"
               style={{ "--fd": "2.1s", "--tilt": "6deg" } as React.CSSProperties}
             >
               dj
             </div>
             <div
-              className="float-badge absolute -bottom-4 right-10 flex h-11 w-11 items-center justify-center rounded-2xl bg-ink font-display text-lg font-bold text-white shadow-lg"
+              data-fly-src="next"
+              className="float-badge absolute -bottom-4 right-10 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#111] font-display text-lg font-bold text-white shadow-lg"
               style={{ "--fd": "0.6s", "--tilt": "-6deg" } as React.CSSProperties}
             >
               N

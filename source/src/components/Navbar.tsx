@@ -17,7 +17,7 @@ function LogoCube() {
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-ink/10 bg-white/85 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-ink/10 bg-night/85 backdrop-blur-md">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <a href="#top" className="flex items-center gap-2.5">
           <LogoCube />
@@ -39,7 +39,7 @@ export default function Navbar() {
             href="https://drive.google.com/file/d/1xpDCzPE7qCdnKQRGQ_DlG10uw3nBLJoy/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-ink px-4 py-1.5 text-sm font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-blue hover:shadow-md"
+            className="rounded-full bg-blue px-4 py-1.5 text-sm font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-coral hover:shadow-md"
           >
             Resume ↗
           </a>

@@ -4,18 +4,20 @@
   --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
 
-  --color-cloud: #f5faff;
-  --color-ink: #1c2940;
-  --color-blue: #2f6bff;
+  --color-night: #0b1220;
+  --color-card: #141e30;
+  --color-cloud: #1b2740;
+  --color-ink: #e8eef8;
+  --color-blue: #4d82ff;
   --color-coral: #ff7a59;
   --color-mint: #2ec99b;
   --color-sun: #ffc531;
   --color-lilac: #a78bfa;
-  --color-steel: #64748b;
+  --color-steel: #7e8ea3;
 }
 
 body {
-  background: #ffffff;
+  background: var(--color-night);
   color: var(--color-ink);
   font-family: var(--font-sans);
   overflow-x: hidden;
@@ -35,7 +37,7 @@ html {
 
 ::selection {
   background: var(--color-sun);
-  color: var(--color-ink);
+  color: var(--color-night);
 }
 
 ::-webkit-scrollbar {
@@ -64,7 +66,7 @@ html {
 
 /* ---------- animated headline gradient ---------- */
 .text-sheen {
-  background: linear-gradient(90deg, #1c2940, #2f6bff 30%, #ff7a59 60%, #1c2940 100%);
+  background: linear-gradient(90deg, #e8eef8, #4d82ff 30%, #ff7a59 60%, #e8eef8 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -108,6 +110,10 @@ html {
   transform: none;
 }
 
+.tile-btn {
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
 /* periodic hop wave travelling across the row */
 .tile-hop {
   animation: tile-hop 5.5s ease-in-out infinite;
@@ -128,7 +134,7 @@ html {
 }
 .tile-btn:hover {
   transform: translateY(-10px) rotate(-5deg) scale(1.12);
-  box-shadow: 0 22px 35px -18px rgba(28, 41, 64, 0.55);
+  box-shadow: 0 22px 35px -18px rgba(0, 0, 0, 0.7);
 }
 
 .spin-slow {
@@ -158,6 +164,38 @@ html {
   50% { transform: translateY(8px); opacity: 1; }
 }
 
+/* ---------- physics tiles ---------- */
+.tile {
+  touch-action: none;
+}
+.tile-btn {
+  cursor: grab;
+}
+.tile-btn:active {
+  cursor: grabbing;
+}
+.physics-on .tile-hop {
+  animation: none;
+}
+.physics-on .tile-btn:hover {
+  transform: none;
+}
+
+/* ---------- timeline dot burst ---------- */
+.dot-pop .dot-core {
+  animation: dot-bump 0.5s cubic-bezier(0.3, 1.6, 0.4, 1);
+}
+.dot-pop .dot-ring {
+  animation: dot-ring 0.6s ease-out;
+}
+@keyframes dot-bump {
+  40% { transform: scale(1.7); }
+}
+@keyframes dot-ring {
+  from { transform: scale(0.4); opacity: 0.8; }
+  to   { transform: scale(3.2); opacity: 0; }
+}
+
 /* ---------- timeline dots ---------- */
 .stop-ping {
   animation: stop-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
@@ -167,6 +205,270 @@ html {
   70%, 100% { transform: scale(2.1); opacity: 0; }
 }
 
+/* ---------- buddy mascot ---------- */
+.buddy svg {
+  transform: scaleX(var(--dir, 1));
+  transition: transform 0.25s ease;
+}
+.buddy svg * {
+  transform-box: fill-box;
+}
+.b-lean {
+  transform-origin: 50% 95%;
+  transition: transform 0.3s ease;
+}
+.buddy[data-state="run"] .b-lean {
+  transform: rotate(7deg);
+}
+.b-leg {
+  transform-origin: 50% 8%;
+}
+.b-arm {
+  transform-origin: 50% 10%;
+}
+.b-fig {
+  transform-origin: 50% 90%;
+}
+
+@keyframes b-swing {
+  0%, 100% { transform: rotate(var(--amp, 24deg)); }
+  50% { transform: rotate(calc(var(--amp, 24deg) * -1)); }
+}
+@keyframes b-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(var(--bob, -3px)); }
+}
+
+.buddy[data-state="walk"] .b-leg-l { --amp: 24deg; animation: b-swing 0.55s ease-in-out infinite; }
+.buddy[data-state="walk"] .b-leg-r { --amp: -24deg; animation: b-swing 0.55s ease-in-out infinite; }
+.buddy[data-state="walk"] .b-arm-l { --amp: -20deg; animation: b-swing 0.55s ease-in-out infinite; }
+.buddy[data-state="walk"] .b-arm-r { --amp: 20deg; animation: b-swing 0.55s ease-in-out infinite; }
+.buddy[data-state="walk"] .b-fig { --bob: -2.5px; animation: b-bob 0.275s ease-in-out infinite; }
+
+.buddy[data-state="run"] .b-leg-l { --amp: 42deg; animation: b-swing 0.3s linear infinite; }
+.buddy[data-state="run"] .b-leg-r { --amp: -42deg; animation: b-swing 0.3s linear infinite; }
+.buddy[data-state="run"] .b-arm-l { --amp: -38deg; animation: b-swing 0.3s linear infinite; }
+.buddy[data-state="run"] .b-arm-r { --amp: 38deg; animation: b-swing 0.3s linear infinite; }
+.buddy[data-state="run"] .b-fig { --bob: -5px; animation: b-bob 0.15s ease-in-out infinite; }
+
+.b-line {
+  opacity: 0;
+}
+.buddy[data-state="run"] .b-line {
+  opacity: 0.5;
+  animation: b-line 0.3s linear infinite;
+}
+.buddy[data-state="run"] .b-line2 { animation-delay: 0.1s; }
+.buddy[data-state="run"] .b-line3 { animation-delay: 0.18s; }
+@keyframes b-line {
+  from { transform: translateX(2px); opacity: 0.5; }
+  to   { transform: translateX(-12px); opacity: 0; }
+}
+
+/* blink always; glance down at the watch while idle */
+.b-eye {
+  animation: b-blink 4.2s infinite;
+}
+@keyframes b-blink {
+  0%, 91%, 100% { scale: 1 1; }
+  94% { scale: 1 0.08; }
+}
+.buddy[data-state="idle"] .b-eye {
+  animation: b-blink 4.2s infinite, b-glance 7s ease-in-out 1.5s infinite;
+}
+@keyframes b-glance {
+  0%, 52%, 88%, 100% { translate: 0 0; }
+  58%, 82% { translate: -2.5px 3px; }
+}
+.buddy[data-state="idle"] .b-arm-l {
+  animation: b-watch 7s ease-in-out 1.5s infinite;
+}
+@keyframes b-watch {
+  0%, 52%, 90%, 100% { transform: rotate(0deg); }
+  58%, 82% { transform: rotate(-118deg); }
+}
+.buddy[data-state="idle"] .b-lean {
+  animation: b-idle-sway 7s ease-in-out 1.5s infinite;
+}
+@keyframes b-idle-sway {
+  0%, 52%, 90%, 100% { transform: rotate(0deg); }
+  58%, 82% { transform: rotate(-3deg); }
+}
+
+/* torch-bearer variant — right arm tracks the beam angle (set from JS) */
+.buddy.torch-buddy .b-arm-r,
+.buddy.torch-buddy[data-state="walk"] .b-arm-r,
+.buddy.torch-buddy[data-state="run"] .b-arm-r,
+.buddy.torch-buddy[data-state="idle"] .b-arm-r {
+  animation: none;
+  transform: rotate(var(--arm, -92deg));
+}
+.torch-buddy .b-line {
+  display: none;
+}
+.torch-buddy {
+  pointer-events: none;
+  will-change: transform;
+}
+
+.torch-cone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  height: 260px;
+  margin-top: -130px;
+  pointer-events: none;
+  transform-origin: 0 50%;
+  will-change: transform, width, height;
+}
+.torch-cone > div {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: screen;
+}
+/* wide ~120° ambient spread */
+.torch-cone-wide {
+  background: radial-gradient(
+    farthest-side at 0% 50%,
+    rgba(255, 250, 232, 0.42),
+    rgba(255, 250, 232, 0.17) 45%,
+    rgba(255, 250, 232, 0.05) 72%,
+    transparent 95%
+  );
+  -webkit-mask-image: conic-gradient(
+    from 0deg at 0% 50%,
+    transparent 32deg,
+    #000 60deg,
+    #000 120deg,
+    transparent 148deg
+  );
+  mask-image: conic-gradient(
+    from 0deg at 0% 50%,
+    transparent 32deg,
+    #000 60deg,
+    #000 120deg,
+    transparent 148deg
+  );
+}
+/* bright ~34° core beam */
+.torch-cone-core {
+  background: radial-gradient(
+    farthest-side at 0% 50%,
+    rgba(255, 252, 240, 0.75),
+    rgba(255, 252, 240, 0.3) 45%,
+    rgba(255, 252, 240, 0.09) 70%,
+    transparent 92%
+  );
+  -webkit-mask-image: conic-gradient(
+    from 0deg at 0% 50%,
+    transparent 66deg,
+    #000 80deg,
+    #000 100deg,
+    transparent 114deg
+  );
+  mask-image: conic-gradient(
+    from 0deg at 0% 50%,
+    transparent 66deg,
+    #000 80deg,
+    #000 100deg,
+    transparent 114deg
+  );
+}
+
+.torch-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 15;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgba(255, 250, 232, 0.28),
+    rgba(255, 250, 232, 0.1) 55%,
+    transparent
+  );
+  mix-blend-mode: screen;
+  will-change: transform, width, height;
+}
+
+/* the page waits in the dark until the beam reaches it */
+.torch-on .torch-card {
+  opacity: 0.22;
+  filter: saturate(0.5) brightness(0.75);
+  transition: opacity 0.5s ease, filter 0.5s ease;
+}
+.torch-on .torch-card.is-near {
+  opacity: 0.45;
+  filter: saturate(0.7) brightness(0.85);
+}
+.torch-on .torch-card.is-lit {
+  opacity: 1;
+  filter: none;
+}
+/* small screens: readable three-tier lighting, no beam or halo overlays */
+@media (max-width: 1023.9px) {
+  .torch-on .torch-card {
+    opacity: 0.4;
+    filter: none;
+    transition: opacity 0.4s ease;
+  }
+  .torch-on .torch-card.is-near {
+    opacity: 0.7;
+    filter: none;
+  }
+  .torch-on .torch-card.is-lit {
+    opacity: 1;
+    filter: none;
+  }
+  /* only the narrow core beam, softened — the wide wash stays off */
+  .torch-glow,
+  .torch-cone-wide {
+    display: none;
+  }
+  /* wider ~55° beam on mobile */
+  .torch-cone-core {
+    opacity: 0.75;
+    -webkit-mask-image: conic-gradient(
+      from 0deg at 0% 50%,
+      transparent 55deg,
+      #000 72deg,
+      #000 108deg,
+      transparent 125deg
+    );
+    mask-image: conic-gradient(
+      from 0deg at 0% 50%,
+      transparent 55deg,
+      #000 72deg,
+      #000 108deg,
+      transparent 125deg
+    );
+  }
+}
+
+/* pocket-size guide fixed at the bottom centre on small screens */
+@media (max-width: 1023.9px) {
+  .torch-buddy {
+    position: fixed;
+    left: 50%;
+    top: auto;
+    bottom: 4px;
+    z-index: 40;
+    transform: translateX(-50%) !important;
+  }
+  /* anchor to the dynamic viewport so the browser URL bar never covers him */
+  @supports (top: 1dvh) {
+    .torch-buddy {
+      top: calc(100dvh - 62px);
+      bottom: auto;
+    }
+  }
+  .torch-buddy svg {
+    height: 3.5rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal, .tile {
     opacity: 1;
@@ -174,7 +476,9 @@ html {
     transition: none;
   }
   .text-sheen, .word-rotator > span, .tile-hop, .spin-slow,
-  .float-badge, .scroll-cue, .stop-ping {
+  .float-badge, .scroll-cue, .stop-ping, .b-eye,
+  .b-lean, .b-arm-l, .b-arm-r, .b-leg-l, .b-leg-r, .b-fig {
     animation: none;
   }
+  .buddy, .torch-cone { display: none; }
 }

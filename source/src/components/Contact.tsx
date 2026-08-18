@@ -36,28 +36,30 @@ export default function Contact() {
     <section id="contact" className="relative px-4 py-24">
       <div className="mx-auto max-w-3xl">
         <Reveal className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue">
-            Contact
-          </p>
-          <h2 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
-            Let&apos;s build something together
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-ink/65">
-            Open to interesting problems, good teams and anything that ships to
-            real users. The fastest way to reach me is a plain old email — I
-            usually reply within a day.
-          </p>
+          <div className="torch-card">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue">
+              Contact
+            </p>
+            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
+              Let&apos;s build something together
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-ink/65">
+              Open to interesting problems, good teams and anything that ships to
+              real users. The fastest way to reach me is a plain old email — I
+              usually reply within a day.
+            </p>
+          </div>
         </Reveal>
 
         <Reveal delay={150}>
-          <div className="mt-12 grid gap-4 sm:grid-cols-2">
+          <div className="torch-card mt-12 grid gap-4 sm:grid-cols-2">
             {channels.map((c) => (
               <a
                 key={c.label}
                 href={c.href}
                 target={c.href.startsWith("mailto") ? undefined : "_blank"}
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 rounded-2xl border border-ink/10 bg-white p-5 shadow-[0_16px_40px_-30px_rgba(28,41,64,0.5)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-30px_rgba(28,41,64,0.6)]"
+                className="group flex items-center gap-4 rounded-2xl border border-ink/10 bg-card p-5 shadow-[0_16px_40px_-30px_rgba(0,0,0,0.8)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-30px_rgba(0,0,0,0.9)]"
               >
                 <span
                   className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl font-display text-lg font-bold text-white transition-transform duration-300 group-hover:scale-110"

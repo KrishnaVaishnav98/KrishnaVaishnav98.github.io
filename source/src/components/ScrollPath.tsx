@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 export default function ScrollPath() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
+  const trailRef = useRef<SVGPathElement>(null);
   const arrowRef = useRef<SVGGElement>(null);
   const [geom, setGeom] = useState<{ w: number; h: number; d: string } | null>(null);
 
@@ -69,7 +70,10 @@ export default function ScrollPath() {
       return (lo + hi) / 2;
     };
 
+    const trail = trailRef.current;
     let raf = 0;
+    let prevAt = 0;
+    let vel = 0;
     const update = () => {
       raf = 0;
       const rect = wrap.getBoundingClientRect();
@@ -77,12 +81,24 @@ export default function ScrollPath() {
       const scrolled = Math.max(-rect.top, 0);
       const targetY = scrolled + vh * 0.55;
       const at = lengthAtY(targetY);
+      vel = vel * 0.82 + (at - prevAt) * 0.18;
+      prevAt = at;
       path.style.strokeDashoffset = `${len - at}`;
       const p = path.getPointAtLength(at);
       const q = path.getPointAtLength(Math.max(at - 2, 0));
       const angle = (Math.atan2(p.y - q.y, p.x - q.x) * 180) / Math.PI;
-      arrow.setAttribute("transform", `translate(${p.x},${p.y}) rotate(${angle})`);
+      const stretch = 1 + Math.min(Math.abs(vel) / 30, 0.9);
+      arrow.setAttribute("transform", `translate(${p.x},${p.y}) rotate(${angle}) scale(${stretch},1)`);
       arrow.style.opacity = at > 4 && at < len - 2 ? "1" : "0";
+      /* comet trail grows with scroll speed */
+      if (trail) {
+        const tl = Math.min(Math.abs(vel) * 5, 140);
+        trail.style.strokeDasharray = `${tl} ${len}`;
+        trail.style.strokeDashoffset = `${tl - at}`;
+        trail.style.opacity = tl > 3 ? "0.14" : "0";
+      }
+      /* keep decaying the trail after scrolling stops */
+      if (Math.abs(vel) > 0.6 && !raf) raf = requestAnimationFrame(update);
     };
 
     if (reduced) {
@@ -115,7 +131,7 @@ export default function ScrollPath() {
         >
           <defs>
             <linearGradient id="path-grad" x1="0" y1="0" x2="0" y2={geom.h} gradientUnits="userSpaceOnUse">
-              <stop offset="0" stopColor="#2f6bff" />
+              <stop offset="0" stopColor="#4d82ff" />
               <stop offset="0.45" stopColor="#2ec99b" />
               <stop offset="0.75" stopColor="#ff7a59" />
               <stop offset="1" stopColor="#a78bfa" />
@@ -143,10 +159,10 @@ export default function ScrollPath() {
           <path
             d={geom.d}
             fill="none"
-            stroke="#1c2940"
-            strokeOpacity="0.08"
-            strokeWidth="2"
-            strokeDasharray="6 10"
+            stroke="#e8eef8"
+            strokeOpacity="0.04"
+            strokeWidth="1.5"
+            strokeDasharray="5 12"
             strokeLinecap="round"
           />
           {/* drawn progress — dashed */}
@@ -154,16 +170,28 @@ export default function ScrollPath() {
             d={geom.d}
             fill="none"
             stroke="url(#path-grad)"
-            strokeWidth="2.5"
-            strokeOpacity="0.6"
-            strokeDasharray="10 12"
+            strokeWidth="1.8"
+            strokeOpacity="0.28"
+            strokeDasharray="8 14"
             strokeLinecap="round"
             mask="url(#path-mask)"
           />
+          {/* comet trail behind the arrow when scrolling fast */}
+          <path
+            ref={trailRef}
+            d={geom.d}
+            fill="none"
+            stroke="url(#path-grad)"
+            strokeWidth="4"
+            strokeLinecap="round"
+            style={{ opacity: 0, transition: "opacity 0.25s" }}
+          />
           {/* travelling arrow tip */}
           <g ref={arrowRef} style={{ opacity: 0, transition: "opacity 0.3s" }}>
-            <circle r="10" fill="#2f6bff" opacity="0.15" />
-            <path d="M -7 -6 L 9 0 L -7 6 L -3 0 Z" fill="#2f6bff" />
+            <g transform="scale(0.75)">
+              <circle r="9" fill="#4d82ff" opacity="0.12" />
+              <path d="M -7 -6 L 9 0 L -7 6 L -3 0 Z" fill="#4d82ff" fillOpacity="0.55" />
+            </g>
           </g>
         </svg>
       )}

@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import TiltCard from "./TiltCard";
 
 type Project = {
   title: string;
@@ -71,15 +72,17 @@ export default function Projects() {
     <section id="projects" className="relative px-4 py-24">
       <div className="mx-auto max-w-6xl">
         <Reveal className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue">
-            Selected work
-          </p>
-          <h2 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
-            Projects
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-ink/65">
-            Five live platforms, shipped to production and used by real people.
-          </p>
+          <div className="torch-card">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue">
+              Selected work
+            </p>
+            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
+              Projects
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-ink/65">
+              Five live platforms, shipped to production and used by real people.
+            </p>
+          </div>
         </Reveal>
 
         <div className="mt-14 grid gap-7 md:grid-cols-2">
@@ -93,7 +96,8 @@ export default function Projects() {
                   : ""
               }
             >
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-ink/10 bg-white p-7 shadow-[0_20px_50px_-30px_rgba(28,41,64,0.4)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_30px_60px_-30px_rgba(28,41,64,0.5)]">
+              <TiltCard className="torch-card h-full rounded-2xl">
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-ink/10 bg-card p-7 shadow-[0_20px_50px_-30px_rgba(0,0,0,0.7)] transition-shadow duration-300 hover:shadow-[0_30px_60px_-30px_rgba(0,0,0,0.85)]">
                 <span className="absolute inset-x-0 top-0 h-1.5" style={{ backgroundColor: p.accent }} />
                 <div className="flex items-start justify-between gap-4">
                   <div>
@@ -141,6 +145,7 @@ export default function Projects() {
                   </a>
                 </div>
               </article>
+              </TiltCard>
             </Reveal>
           ))}
         </div>
